@@ -31,17 +31,13 @@
                 NSString *attr = @(property_getAttributes(property)); // Property attributes
                 NSString *type = @"@";
                 BOOL readonly = NO;
-                WFLog(@"Accessing property %@ with attributes %@", name, attr);
+                WFLog(@"Accessing property %@ with attributes %@.", name, attr);
                 
                 // Check the property type.
                 NSArray *attrs = [attr componentsSeparatedByString:@","];
                 for (NSString *attribute in attrs)
                 {
-                    if ([attribute hasPrefix:@"T"])
-                    {
-                        type = [attribute substringFromIndex:1];
-                    }
-                    else if ([attribute hasPrefix:@"R"])
+                    if ([attribute hasPrefix:@"R"])
                     {
                         readonly = YES;
                     }
@@ -62,21 +58,8 @@
                     // Dispatching would require some tricks.
                     if ([type hasPrefix:WFType(id)]) // Objects. Special requirements is required.
                     {
-                        Class class = Nil;
+                        Class class = [self classForProperty:name];
                         id object = value;
-                        if ([type length] > 3)
-                        {
-                            NSString *className = [type substringWithRange:NSMakeRange(2, [type length] - 3)];
-                            WFLog(@"Class type %@ occurred for property %@.", className, name);
-                            class = NSClassFromString(className);
-                            if (!class)
-                                NSLog(@"WARNING: Class type %@ asked for my broperty %@ not found.", className, name);
-                        }
-                        
-                        if (!class)
-                        {
-                            class = [self classForProperty:name];
-                        }
                         
                         if (!class)
                             NSLog(@"WARNING: Class for property %@ cannot be determined.", name);
@@ -122,12 +105,97 @@
 
 - (Class)classForProperty:(NSString *)property
 {
-    return Nil;
+    objc_property_t objcProperty = class_getProperty([self class], [property cStringUsingEncoding:[NSString defaultCStringEncoding]]);
+    NSString *attributes = @(property_getAttributes(objcProperty));
+    NSString *type = @"@";
+    Class class = Nil;
+    
+    NSString *methodName = WFSTR(@"classForProperty%@", [property stringByReplacingCharactersInRange:NSMakeRange(0, 1)
+                                                                                          withString:[[property substringToIndex:1] uppercaseString]]);
+    SEL selector = NSSelectorFromString(methodName);
+    if (selector && [self respondsToSelector:selector])
+        class = objc_msgSend(self, selector);
+    
+    if (class)
+        return class;
+    
+    NSArray *attrs = [attributes componentsSeparatedByString:@","];
+    for (NSString *attribute in attrs)
+    {
+        if ([attribute hasPrefix:@"T"])
+        {
+            type = [attribute substringFromIndex:1];
+        }
+    }
+    
+    if ([type length] > 3)
+    {
+        NSString *className = [type substringWithRange:NSMakeRange(2, [type length] - 3)];
+        WFLog(@"Class type %@ occurred for property %@.", className, property);
+        class = NSClassFromString(className);
+        if (!class)
+            NSLog(@"WARNING: Class type %@ asked for my broperty %@ not found.", className, property);
+    }
+    
+    return class;
 }
 
 - (NSDictionary *)dictionaryRepresentation
 {
+    // Get a list of properties.
+    unsigned int propertyCount = 0;
+    objc_property_t *properties = class_copyPropertyList([self class], &propertyCount);
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithCapacity:propertyCount];
     
+    if (properties)
+    {
+        // Enumerate all properties.
+        
+        for (unsigned int i = 0; i < propertyCount; i++)
+        {
+            objc_property_t property = properties[i];
+            NSString *name = @(property_getName(property)); // Property name.
+            WFLog(@"Accessing property %@.", name);
+            
+            id value = [self valueForKey:name]; // Find the value.
+            
+            if (!value)
+            {
+                NSLog(@"WARNING: Cannot determine value for property %@, Skipped.", name);
+                continue;
+            }
+            
+            if ([name isEqualToString:@"ID"])
+            {
+                name = @"id"; // ID is used instead of id.
+            }
+            
+            if ([value isKindOfClass:[WFObject class]])
+            {
+                value = [value dictionaryRepresentation];
+            }
+            else if ([value isKindOfClass:[NSArray class]])
+            {
+                NSMutableArray *outputArray = [NSMutableArray arrayWithCapacity:[value count]];
+                for (id object in value)
+                {
+                    if ([object isKindOfClass:[WFObject class]])
+                    {
+                        [outputArray addObject:[object dictionaryRepresentation]];
+                    }
+                    else
+                    {
+                        [outputArray addObject:object];
+                    }
+                }
+            }
+            
+            dictionary[name] = value;
+        }
+        free(properties);
+        properties = NULL;
+    }
+    return dictionary;
 }
 
 @end
