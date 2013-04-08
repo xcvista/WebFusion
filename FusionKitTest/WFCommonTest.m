@@ -8,6 +8,7 @@
 
 #import "WFCommonTest.h"
 #import <FusionKit/FusionKit.h>
+#import <FusionProtocol/FusionProtocol.h>
 
 @implementation WFCommonTest
 

@@ -132,6 +132,15 @@ static WFConnection *WFConn;
 
 @implementation WFConnection
 
+- (id)init
+{
+    if (self = [super init])
+    {
+        self.serverRoot = [NSURL URLWithString:@"https://www.shisoft.net/ajax/"];
+    }
+    return self;
+}
+
 + (WFConnection *)connection
 {
     if (!WFConn)
@@ -141,7 +150,15 @@ static WFConnection *WFConn;
 
 - (NSData *)dataWithData:(NSData *)data fromMethod:(NSString *)method error:(NSError *__autoreleasing *)error
 {
+    NSURL *methodURL = [NSURL URLWithString:method relativeToURL:self.serverRoot];
     
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:methodURL];
+    
+    if ([data length])
+    {
+        [request setHTTPMethod:@"POST"];
+        [request setHTTPBody:data];
+    }
 }
 
 @end

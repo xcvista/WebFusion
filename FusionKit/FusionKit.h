@@ -10,6 +10,6 @@
 #import <FusionKit/WFTypes.h>
 #import <FusionKit/WFConstants.h>
 #import <FusionKit/WFObject.h>
-#import <FusionKit/WFLogin.h>
+#import <FusionKit/WFNull.h>
 #import <FusionKit/WFWrapper.h>
 #import <FusionKit/WFConnection.h>

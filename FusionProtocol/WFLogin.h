@@ -6,7 +6,9 @@
 //  Copyright (c) 2013年 myWorld Creations. All rights reserved.
 //
 
-#import <FusionKit/WFConnection.h>
+#import <FusionKit/FusionKit.h>
+
+WFBeginDecls
 
 @class WFWrapper;
 
@@ -18,3 +20,5 @@
 - (WFWrapper *)login;
 
 @end
+
+WFEndDecls
