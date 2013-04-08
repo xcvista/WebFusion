@@ -1,2 +1,2 @@
 #import "WFDecls.h"
-WFStaticStringValue(WFVersion, @"0");
+WFStaticStringValue(WFVersion, @"");
