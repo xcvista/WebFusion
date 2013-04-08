@@ -34,7 +34,24 @@
 		1DBAAB0517130AF4002E32F7 /* FusionProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DBAAAFD17130A95002E32F7 /* FusionProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1DBAAB0817130B0C002E32F7 /* WFLogin.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DBAAB0617130B0C002E32F7 /* WFLogin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1DBAAB0917130B0C002E32F7 /* WFLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DBAAB0717130B0C002E32F7 /* WFLogin.m */; };
+		1DBAAB1017131402002E32F7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DBAAB0F17131402002E32F7 /* Foundation.framework */; };
+		1DBAAB1317131402002E32F7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DBAAB1217131402002E32F7 /* main.m */; };
+		1DBAAB1B1713140E002E32F7 /* FusionKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DBAAA9317129BDB002E32F7 /* FusionKit.framework */; };
+		1DBAAB1C1713140E002E32F7 /* FusionProtocol.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DBAAAF417130A95002E32F7 /* FusionProtocol.framework */; };
+		1DBAAB1E17131436002E32F7 /* libreadline.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DBAAB1D17131436002E32F7 /* libreadline.dylib */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1DBAAB0C17131402002E32F7 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1DBAAA8D17129BA5002E32F7 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -73,6 +90,12 @@
 		1DBAAAFD17130A95002E32F7 /* FusionProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FusionProtocol.h; sourceTree = "<group>"; };
 		1DBAAB0617130B0C002E32F7 /* WFLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WFLogin.h; sourceTree = "<group>"; };
 		1DBAAB0717130B0C002E32F7 /* WFLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFLogin.m; sourceTree = "<group>"; };
+		1DBAAB0E17131402002E32F7 /* webfusion */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = webfusion; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DBAAB0F17131402002E32F7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1DBAAB1217131402002E32F7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1DBAAB1517131402002E32F7 /* WebFusion-CLI-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WebFusion-CLI-Prefix.pch"; sourceTree = "<group>"; };
+		1DBAAB1D17131436002E32F7 /* libreadline.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libreadline.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/libreadline.dylib; sourceTree = DEVELOPER_DIR; };
+		1DBAAB1F1713186E002E32F7 /* decls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = decls.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +127,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1DBAAB0B17131402002E32F7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1DBAAB1E17131436002E32F7 /* libreadline.dylib in Frameworks */,
+				1DBAAB1B1713140E002E32F7 /* FusionKit.framework in Frameworks */,
+				1DBAAB1C1713140E002E32F7 /* FusionProtocol.framework in Frameworks */,
+				1DBAAB1017131402002E32F7 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -114,6 +148,7 @@
 				1DBAAA9C17129BDB002E32F7 /* FusionKit */,
 				1DBAAAF617130A95002E32F7 /* FusionProtocol */,
 				1DBAAABB1712A311002E32F7 /* FusionKitTest */,
+				1DBAAB1117131402002E32F7 /* WebFusion-CLI */,
 				1DBAAA9517129BDB002E32F7 /* Frameworks */,
 				1DBAAA9417129BDB002E32F7 /* Products */,
 			);
@@ -125,6 +160,7 @@
 				1DBAAA9317129BDB002E32F7 /* FusionKit.framework */,
 				1DBAAAB71712A311002E32F7 /* FusionKitTest.octest */,
 				1DBAAAF417130A95002E32F7 /* FusionProtocol.framework */,
+				1DBAAB0E17131402002E32F7 /* webfusion */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -132,8 +168,10 @@
 		1DBAAA9517129BDB002E32F7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1DBAAB1D17131436002E32F7 /* libreadline.dylib */,
 				1DBAAA9617129BDB002E32F7 /* Cocoa.framework */,
 				1DBAAAB81712A311002E32F7 /* SenTestingKit.framework */,
+				1DBAAB0F17131402002E32F7 /* Foundation.framework */,
 				1DBAAA9817129BDB002E32F7 /* Other Frameworks */,
 			);
 			name = Frameworks;
@@ -217,6 +255,24 @@
 				1DBAAAF817130A95002E32F7 /* FusionProtocol-Info.plist */,
 				1DBAAAF917130A95002E32F7 /* InfoPlist.strings */,
 				1DBAAAFC17130A95002E32F7 /* FusionProtocol-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1DBAAB1117131402002E32F7 /* WebFusion-CLI */ = {
+			isa = PBXGroup;
+			children = (
+				1DBAAB1F1713186E002E32F7 /* decls.h */,
+				1DBAAB1217131402002E32F7 /* main.m */,
+				1DBAAB1417131402002E32F7 /* Supporting Files */,
+			);
+			path = "WebFusion-CLI";
+			sourceTree = "<group>";
+		};
+		1DBAAB1417131402002E32F7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1DBAAB1517131402002E32F7 /* WebFusion-CLI-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -306,6 +362,23 @@
 			productReference = 1DBAAAF417130A95002E32F7 /* FusionProtocol.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		1DBAAB0D17131402002E32F7 /* WebFusion-CLI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DBAAB1817131402002E32F7 /* Build configuration list for PBXNativeTarget "WebFusion-CLI" */;
+			buildPhases = (
+				1DBAAB0A17131402002E32F7 /* Sources */,
+				1DBAAB0B17131402002E32F7 /* Frameworks */,
+				1DBAAB0C17131402002E32F7 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "WebFusion-CLI";
+			productName = "WebFusion-CLI";
+			productReference = 1DBAAB0E17131402002E32F7 /* webfusion */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -331,6 +404,7 @@
 				1DBAAA9217129BDB002E32F7 /* FusionKit */,
 				1DBAAAF317130A95002E32F7 /* FusionProtocol */,
 				1DBAAAB61712A311002E32F7 /* FusionKitTest */,
+				1DBAAB0D17131402002E32F7 /* WebFusion-CLI */,
 			);
 		};
 /* End PBXProject section */
@@ -418,6 +492,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DBAAB0917130B0C002E32F7 /* WFLogin.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1DBAAB0A17131402002E32F7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1DBAAB1317131402002E32F7 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -690,6 +772,71 @@
 			};
 			name = Release;
 		};
+		1DBAAB1917131402002E32F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WebFusion-CLI/WebFusion-CLI-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = webfusion;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		1DBAAB1A17131402002E32F7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WebFusion-CLI/WebFusion-CLI-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = webfusion;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -723,6 +870,14 @@
 			buildConfigurations = (
 				1DBAAB0117130A95002E32F7 /* Debug */,
 				1DBAAB0217130A95002E32F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		1DBAAB1817131402002E32F7 /* Build configuration list for PBXNativeTarget "WebFusion-CLI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DBAAB1917131402002E32F7 /* Debug */,
+				1DBAAB1A17131402002E32F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

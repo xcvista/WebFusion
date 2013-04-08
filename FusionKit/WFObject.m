@@ -51,8 +51,8 @@
                     value = dictionary[@"id"]; // ID is used instead of id.
                 }
                 
-                if (!value)
-                    NSLog(@"WARNING: Cannot determine value for property %@, nil is used.", name);
+                //if (!value)
+                //    NSLog(@"WARNING: Cannot determine value for property %@, nil is used.", name);
                 
                 if (!readonly && value)
                 {
@@ -62,8 +62,8 @@
                         Class class = [self classForProperty:name];
                         id object = value;
                         
-                        if (!class)
-                            NSLog(@"WARNING: Class for property %@ cannot be determined.", name);
+                        //if (!class)
+                        //    NSLog(@"WARNING: Class for property %@ cannot be determined.", name);
                         
                         if (class && [class isSubclassOfClass:[WFObject class]])
                         {
@@ -81,7 +81,7 @@
                                     }
                                     else
                                     {
-                                        NSLog(@"WARNING: Object typed %@ occured in array asking for objects typed %@.", NSStringFromClass([item class]), NSStringFromClass(class));
+                                        //NSLog(@"WARNING: Object typed %@ occured in array asking for objects typed %@.", NSStringFromClass([item class]), NSStringFromClass(class));
                                         [mutableArray addObject:item];
                                     }
                                 }
@@ -134,8 +134,8 @@
         NSString *className = [type substringWithRange:NSMakeRange(2, [type length] - 3)];
         //WFLog(@"Class type %@ occurred for property %@.", className, property);
         class = NSClassFromString(className);
-        if (!class)
-            NSLog(@"WARNING: Class type %@ asked for my broperty %@ not found.", className, property);
+        //if (!class)
+        //    NSLog(@"WARNING: Class type %@ asked for my broperty %@ not found.", className, property);
     }
     
     return class;
@@ -162,7 +162,7 @@
             
             if (!value)
             {
-                NSLog(@"WARNING: Cannot determine value for property %@, Skipped.", name);
+                //NSLog(@"WARNING: Cannot determine value for property %@, Skipped.", name);
                 continue;
             }
             

@@ -17,6 +17,8 @@ WFBeginDecls
 @property NSString *user;
 @property NSString *pass;
 
++ (BOOL)loginAsUser:(NSString *)username withPassword:(NSString *)password error:(NSError **)error;
+
 - (WFWrapper *)login;
 
 @end
