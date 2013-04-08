@@ -7,7 +7,15 @@
 //
 
 #import "WFWrapper.h"
+#import "WFConstants.h"
 
 @implementation WFWrapper
+
+- (BOOL)boolValue
+{
+    if ([self.d isEqual:WFDefaultTrueValue])
+        return YES;
+    return NO;
+}
 
 @end

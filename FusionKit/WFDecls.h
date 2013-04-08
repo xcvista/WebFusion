@@ -33,14 +33,27 @@
 #define WFExtern extern
 #endif // defined(__cplusplus)
 
+WFBeginDecls
+
+#if defined(DEBUG)
+#define WFLog(format, ...) NSLog(format, ##__VA_ARGS__)
+#else
+#define WFLog(format, ...)
+#endif
+
 #define WFStaticString(name, value) WFExtern NSString *const name
 #define WFStaticStringValue(name, value) NSString *const name = value
 
-#define WFSTR(format, ...) [NSString stringWithFormat:format, ##__VA_ARGS__]
+#define WFSTR(format, ...) ([NSString stringWithFormat:format, ##__VA_ARGS__])
+#define WFType(type) (@(@encode(type)))
+#define WFThisBundle ([NSBundle bundleForClass:[self class]])
+#define WFClassFromSelector(selector, dictionary) (NSClassFromString((dictionary)[NSStringFromSelector(selector)]))
 
 #define WFAssignPointer(pointer, value) do { \
 typeof(pointer) __ptr = pointer; \
 if (__ptr) *__ptr = value; \
 } while(0)
+
+WFEndDecls
 
 #endif // FusionKit_D_WFDecls_h

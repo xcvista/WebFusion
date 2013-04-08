@@ -6,8 +6,29 @@
 //  Copyright (c) 2013年 myWorld Creations. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <FusionKit/WFObject.h>
+
+WFBeginDecls
+
+#define WFSendMethodWithType(type) [super sendMethod:_cmd returnClass:[type class]];
+
+@interface WFObject (WFSending)
+
+- (id)sendMethod:(SEL)method returnClass:(Class)class;
+- (Class)classForMethod:(SEL)method;
+
+@end
 
 @interface WFConnection : NSObject
 
+@property NSURL *serverRoot;
+
++ (WFConnection *)connection;
+
+- (NSData *)dataWithData:(NSData *)data
+              fromMethod:(NSString *)method
+                   error:(NSError *__autoreleasing *)error;
+
 @end
+
+WFEndDecls

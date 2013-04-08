@@ -19,7 +19,14 @@
 		1DBAAAC01712A311002E32F7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1DBAAABE1712A311002E32F7 /* InfoPlist.strings */; };
 		1DBAAAC81712A31B002E32F7 /* FusionKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DBAAA9317129BDB002E32F7 /* FusionKit.framework */; };
 		1DBAAACB1712A36E002E32F7 /* WFCommonTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DBAAACA1712A36E002E32F7 /* WFCommonTest.m */; };
-		1DBAAACD1712A4AD002E32F7 /* WFVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DBAAACC1712A4AD002E32F7 /* WFVersion.m */; };
+		1DBAAAD91712A816002E32F7 /* WFObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DBAAAD71712A816002E32F7 /* WFObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1DBAAADA1712A816002E32F7 /* WFObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DBAAAD81712A816002E32F7 /* WFObject.m */; };
+		1DBAAADD1712B827002E32F7 /* WFLogin.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DBAAADB1712B827002E32F7 /* WFLogin.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1DBAAADE1712B827002E32F7 /* WFLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DBAAADC1712B827002E32F7 /* WFLogin.m */; };
+		1DBAAAE11712BCB4002E32F7 /* WFWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DBAAADF1712BCB4002E32F7 /* WFWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1DBAAAE21712BCB4002E32F7 /* WFWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DBAAAE01712BCB4002E32F7 /* WFWrapper.m */; };
+		1DBAAAE51712C181002E32F7 /* WFConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DBAAAE31712C181002E32F7 /* WFConnection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1DBAAAE61712C181002E32F7 /* WFConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DBAAAE41712C181002E32F7 /* WFConnection.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,7 +51,14 @@
 		1DBAAAC41712A311002E32F7 /* FusionKitTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FusionKitTest-Prefix.pch"; sourceTree = "<group>"; };
 		1DBAAAC91712A36E002E32F7 /* WFCommonTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WFCommonTest.h; sourceTree = "<group>"; };
 		1DBAAACA1712A36E002E32F7 /* WFCommonTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFCommonTest.m; sourceTree = "<group>"; };
-		1DBAAACC1712A4AD002E32F7 /* WFVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFVersion.m; sourceTree = "<group>"; };
+		1DBAAAD71712A816002E32F7 /* WFObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WFObject.h; sourceTree = "<group>"; };
+		1DBAAAD81712A816002E32F7 /* WFObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFObject.m; sourceTree = "<group>"; };
+		1DBAAADB1712B827002E32F7 /* WFLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WFLogin.h; sourceTree = "<group>"; };
+		1DBAAADC1712B827002E32F7 /* WFLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFLogin.m; sourceTree = "<group>"; };
+		1DBAAADF1712BCB4002E32F7 /* WFWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WFWrapper.h; sourceTree = "<group>"; };
+		1DBAAAE01712BCB4002E32F7 /* WFWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFWrapper.m; sourceTree = "<group>"; };
+		1DBAAAE31712C181002E32F7 /* WFConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WFConnection.h; sourceTree = "<group>"; };
+		1DBAAAE41712C181002E32F7 /* WFConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFConnection.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,7 +131,14 @@
 				1DBAAAAC17129EFB002E32F7 /* WFTypes.h */,
 				1DBAAAB01712A0D7002E32F7 /* WFConstants.h */,
 				1DBAAAAD17129F51002E32F7 /* WFCommon.m */,
-				1DBAAACC1712A4AD002E32F7 /* WFVersion.m */,
+				1DBAAAD71712A816002E32F7 /* WFObject.h */,
+				1DBAAAD81712A816002E32F7 /* WFObject.m */,
+				1DBAAADB1712B827002E32F7 /* WFLogin.h */,
+				1DBAAADC1712B827002E32F7 /* WFLogin.m */,
+				1DBAAADF1712BCB4002E32F7 /* WFWrapper.h */,
+				1DBAAAE01712BCB4002E32F7 /* WFWrapper.m */,
+				1DBAAAE31712C181002E32F7 /* WFConnection.h */,
+				1DBAAAE41712C181002E32F7 /* WFConnection.m */,
 				1DBAAA9D17129BDB002E32F7 /* Supporting Files */,
 			);
 			path = FusionKit;
@@ -164,6 +185,10 @@
 				1DBAAAAB17129C1E002E32F7 /* FusionKit.h in Headers */,
 				1DBAAAAF17129F98002E32F7 /* WFTypes.h in Headers */,
 				1DBAAAB11712A0D7002E32F7 /* WFConstants.h in Headers */,
+				1DBAAAD91712A816002E32F7 /* WFObject.h in Headers */,
+				1DBAAADD1712B827002E32F7 /* WFLogin.h in Headers */,
+				1DBAAAE11712BCB4002E32F7 /* WFWrapper.h in Headers */,
+				1DBAAAE51712C181002E32F7 /* WFConnection.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,7 +199,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1DBAAAA617129BDB002E32F7 /* Build configuration list for PBXNativeTarget "FusionKit" */;
 			buildPhases = (
-				1DBAAACE1712A529002E32F7 /* WFVersion.m */,
 				1DBAAA8E17129BDB002E32F7 /* Sources */,
 				1DBAAA8F17129BDB002E32F7 /* Frameworks */,
 				1DBAAA9017129BDB002E32F7 /* Headers */,
@@ -269,20 +293,6 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
-		1DBAAACE1712A529002E32F7 /* WFVersion.m */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = WFVersion.m;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "cd $SRCROOT/..\nprintf \"#import \\\"WFDecls.h\\\"\\nWFStaticStringValue(WFVersion, @\\\"%s\\\");\\n\" `git describe --always --tag` > $SRCROOT/FusionKit/WFVersion.m";
-		};
 		1DBAAAD61712A591002E32F7 /* git-version.plist */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -295,7 +305,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd $SRCROOT/..\nprintf \"{ \\\"git-version\\\" = \\\"%s\\\"; }\\n\" `git describe --always --tag` > $TARGET_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH/git-version.plist";
+			shellScript = "cd $SRCROOT\nprintf \"{ \\\"git-version\\\" = \\\"%s\\\"; }\\n\" `git describe --always --tag` > $TARGET_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH/git-version.plist";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -305,7 +315,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DBAAAAE17129F51002E32F7 /* WFCommon.m in Sources */,
-				1DBAAACD1712A4AD002E32F7 /* WFVersion.m in Sources */,
+				1DBAAADA1712A816002E32F7 /* WFObject.m in Sources */,
+				1DBAAADE1712B827002E32F7 /* WFLogin.m in Sources */,
+				1DBAAAE21712BCB4002E32F7 /* WFWrapper.m in Sources */,
+				1DBAAAE61712C181002E32F7 /* WFConnection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

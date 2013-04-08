@@ -6,8 +6,16 @@
 //  Copyright (c) 2013年 myWorld Creations. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <FusionKit/WFObject.h>
 
-@interface WFWrapper : NSObject
+WFBeginDecls
+
+@interface WFWrapper : WFObject
+
+@property id d;
+
+- (BOOL)boolValue;
 
 @end
+
+WFEndDecls

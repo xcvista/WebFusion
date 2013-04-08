@@ -7,6 +7,7 @@
 //
 
 #import "WFLogin.h"
+#import "WFConnection.h"
 
 @implementation WFLogin
 

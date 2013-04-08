@@ -13,13 +13,30 @@
 
 - (void)setUp
 {
-    NSLog(@"Testing WebFusion Version %@.", WFVersion);
+    NSLog(@"Testing WebFusion Version %@.", WFVersion());
 }
 
 - (void)testTimestamp
 {
     STAssertEquals(WFTimeIntervalFromTimestamp(50000), 50.0, @"");
     STAssertEquals(WFTimestampFromTimeInterval(2.0), (WFTimestamp)2000, @"");
+}
+
+- (void)testObjectDeserializing
+{
+    NSDictionary *deserializing = @{@"user": @"foo", @"pass": @"bar"};
+    WFLogin *login = nil;
+    STAssertNotNil(login = [[WFLogin alloc] initWithDictionary:deserializing], @"");
+    STAssertEqualObjects(login.user, @"foo", @"");
+    STAssertEqualObjects(login.pass, @"bar", @"");
+}
+
+- (void)testMethodForwarding
+{
+    NSDictionary *deserializing = @{@"user": @"foo", @"pass": @"bar"};
+    WFLogin *login = nil;
+    STAssertNotNil(login = [[WFLogin alloc] initWithDictionary:deserializing], @"");
+    STAssertTrueNoThrow([[login login] isKindOfClass:[NSError class]], @"");
 }
 
 @end

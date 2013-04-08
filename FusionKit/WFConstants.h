@@ -11,9 +11,14 @@
 
 #import <FusionKit/WFDecls.h>
 
+WFBeginDecls
+
+WFStaticString(WFErrorDoamin, @"info.maxchan.webfusion-v4");
+
 WFStaticString(WFDefaultKey, @"d");
 WFStaticString(WFDefaultTrueValue, @"+");
 WFStaticString(WFDefaultFalseValue, @"-");
-WFStaticString(WFVersion, @"");
+
+WFEndDecls
 
 #endif

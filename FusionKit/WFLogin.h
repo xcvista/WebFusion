@@ -6,8 +6,15 @@
 //  Copyright (c) 2013年 myWorld Creations. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <FusionKit/WFConnection.h>
 
-@interface WFLogin : NSObject
+@class WFWrapper;
+
+@interface WFLogin : WFObject
+
+@property NSString *user;
+@property NSString *pass;
+
+- (WFWrapper *)login;
 
 @end
