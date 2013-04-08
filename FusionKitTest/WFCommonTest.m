@@ -46,8 +46,12 @@
 {
     NSDictionary *deserializing = @{@"user": @"foo", @"pass": @"bar"};
     WFLogin *login = nil;
+    WFWrapper *result = nil;
     STAssertNotNil(login = [[WFLogin alloc] initWithDictionary:deserializing], @"");
-    STAssertNil([login login], @"");
+    STAssertNotNil(result = [login login], @"");
+    STAssertTrue([result isKindOfClass:[WFWrapper class]], @"");
+    STAssertNotNil(result.d, @"");
+    NSLog(@"Result: %@.", result.d);
 }
 
 @end

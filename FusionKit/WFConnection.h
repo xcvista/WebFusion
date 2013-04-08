@@ -28,6 +28,8 @@ WFBeginDecls
               fromMethod:(NSString *)method
                    error:(NSError *__autoreleasing *)error;
 
+- (NSString *)userAgent;
+
 @end
 
 WFEndDecls

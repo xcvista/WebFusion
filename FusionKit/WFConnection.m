@@ -8,6 +8,7 @@
 
 #import "WFConnection.h"
 #import "WFConstants.h"
+#import "WFTypes.h"
 #import <objc/runtime.h>
 #import <objc/message.h>
 
@@ -69,6 +70,7 @@
             if ([downlinkObject isKindOfClass:[NSDictionary class]])
             {
                 value = [[class alloc] initWithDictionary:downlinkObject];
+                CFRetain((__bridge CFTypeRef)(value));
             }
             else if ([downlinkObject isKindOfClass:[NSArray class]])
             {
@@ -159,6 +161,46 @@ static WFConnection *WFConn;
         [request setHTTPMethod:@"POST"];
         [request setHTTPBody:data];
     }
+    
+    [request setValue:[self userAgent] forHTTPHeaderField:@"User-Agent"];
+    
+    NSError *err = nil;
+    NSHTTPURLResponse *response = nil;
+    
+    NSData *responseData = [NSURLConnection sendSynchronousRequest:request
+                                                 returningResponse:&response
+                                                             error:&err];
+    
+    if (![responseData length])
+    {
+        WFAssignPointer(error, err);
+        return nil;
+    }
+    
+    if ([response statusCode] >= 400)
+    {
+        NSDictionary *userInfo = @{
+                                   NSLocalizedDescriptionKey:
+                                       NSLocalizedStringFromTableInBundle(WFSTR(@"http%ld", [response statusCode]),
+                                                                          @"error",
+                                                                          WFThisBundle,
+                                                                          @"")
+                                   };
+        err = [NSError errorWithDomain:WFErrorDoamin
+                                  code:[response statusCode]
+                              userInfo:userInfo];
+        WFAssignPointer(error, err);
+        return nil;
+    }
+    
+    return responseData;
+}
+
+- (NSString *)userAgent
+{
+    NSProcessInfo *processInfo = [NSProcessInfo processInfo];
+    NSArray *OSNames = @[@"Unknown", @"Windows NT", @"Windows", @"Solaris", @"HP UX", @"OS X", @"Sun OS", @"OSF 1"];
+    return WFSTR(@"FusionKit/4.0 (git version %@), %@, %@", WFVersion(), OSNames[[processInfo operatingSystem]], [processInfo operatingSystemVersionString]);
 }
 
 @end

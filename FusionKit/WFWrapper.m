@@ -18,4 +18,9 @@
     return NO;
 }
 
+- (NSString *)description
+{
+    return WFSTR(@"%@: %@", [super description], [self.d description]);
+}
+
 @end

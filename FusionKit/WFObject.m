@@ -32,7 +32,7 @@
                 NSString *attr = @(property_getAttributes(property)); // Property attributes
                 NSString *type = @"@";
                 BOOL readonly = NO;
-                WFLog(@"Accessing property %@ with attributes %@.", name, attr);
+                // WFLog(@"Accessing property %@ with attributes %@.", name, attr);
                 
                 // Check the property type.
                 NSArray *attrs = [attr componentsSeparatedByString:@","];
@@ -132,7 +132,7 @@
     if ([type length] > 3)
     {
         NSString *className = [type substringWithRange:NSMakeRange(2, [type length] - 3)];
-        WFLog(@"Class type %@ occurred for property %@.", className, property);
+        //WFLog(@"Class type %@ occurred for property %@.", className, property);
         class = NSClassFromString(className);
         if (!class)
             NSLog(@"WARNING: Class type %@ asked for my broperty %@ not found.", className, property);
@@ -156,7 +156,7 @@
         {
             objc_property_t property = properties[i];
             NSString *name = @(property_getName(property)); // Property name.
-            WFLog(@"Accessing property %@.", name);
+                                                            //WFLog(@"Accessing property %@.", name);
             
             id value = [self valueForKey:name]; // Find the value.
             
