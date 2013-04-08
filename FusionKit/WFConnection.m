@@ -8,6 +8,8 @@
 
 #import "WFConnection.h"
 #import "WFConstants.h"
+#import <objc/runtime.h>
+#import <objc/message.h>
 
 @implementation WFObject (WFSending)
 
@@ -29,24 +31,8 @@
         
         WFLog(@"Object %@ sending method %@ to server.", NSStringFromClass([self class]), methodName);
         
-        NSDictionary *uplinkObject = [self dictionaryRepresentation];
         NSError *error = nil;
-        
-        if (!uplinkObject)
-        {
-            NSDictionary *userInfo = @{
-                                       NSLocalizedDescriptionKey:
-                                           NSLocalizedStringFromTableInBundle(@"err.noval", @"error", WFThisBundle, @"")
-                                       };
-            value = [NSError errorWithDomain:WFErrorDoamin
-                                        code:1
-                                    userInfo:userInfo];
-            break;
-        }
-        
-        NSData *uplinkData = [NSJSONSerialization dataWithJSONObject:uplinkObject
-                                                             options:0
-                                                               error:&error];
+        NSData *uplinkData = [self JSONDataWithError:&error];
         
         if (!uplinkData)
         {
@@ -122,7 +108,22 @@
 
 - (Class)classForMethod:(SEL)method
 {
-    return Nil;
+    NSMutableString *methodName = [NSStringFromSelector(method) mutableCopy];
+    [methodName replaceOccurrencesOfString:@":"
+                                withString:@""
+                                   options:0
+                                     range:NSMakeRange(0, [methodName length])];
+    [methodName replaceCharactersInRange:NSMakeRange(0, 1)
+                              withString:[[methodName substringToIndex:1] uppercaseString]];
+    
+    NSString *queryMethodName = WFSTR(@"classForMethod%@", methodName);
+    SEL querySelector = NSSelectorFromString(queryMethodName);
+    Class class = Nil;
+    
+    if ([self respondsToSelector:querySelector])
+        class = objc_msgSend(self, querySelector);
+    
+    return class;
 }
 
 @end

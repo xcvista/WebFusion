@@ -14,7 +14,6 @@ WFBeginDecls
 
 @interface WFObject (WFSending)
 
-- (id)sendMethod:(SEL)method returnClass:(Class)class;
 - (Class)classForMethod:(SEL)method;
 
 @end

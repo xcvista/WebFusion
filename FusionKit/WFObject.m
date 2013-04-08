@@ -9,6 +9,7 @@
 #import "WFObject.h"
 #import <objc/runtime.h>
 #import <objc/message.h>
+#import "WFConstants.h"
 
 @implementation WFObject
 
@@ -196,6 +197,61 @@
         properties = NULL;
     }
     return dictionary;
+}
+
+@end
+
+@implementation WFObject (WFObjectJSON)
+
+- (id)initWithJSONData:(NSData *)data error:(NSError *__autoreleasing *)error
+{
+    NSError *err = nil;
+    id object = [NSJSONSerialization JSONObjectWithData:data
+                                                options:0
+                                                  error:&err];
+    if (!object)
+    {
+        WFAssignPointer(error, err);
+        return nil;
+    }
+    
+    return [self initWithDictionary:object];
+}
+
+- (BOOL)canRepresentInJSON
+{
+    return [NSJSONSerialization isValidJSONObject:[self dictionaryRepresentation]];
+}
+
+- (NSData *)JSONDataWithError:(NSError *__autoreleasing *)error
+{
+    NSError *err = nil;
+    NSDictionary *dict = [self dictionaryRepresentation];
+    
+    if (!dict)
+    {
+        NSDictionary *userInfo = @{
+                                   NSLocalizedDescriptionKey:
+                                       NSLocalizedStringFromTableInBundle(@"err.noval", @"error", WFThisBundle, @"")
+                                   };
+        err = [NSError errorWithDomain:WFErrorDoamin
+                                  code:1
+                              userInfo:userInfo];
+        WFAssignPointer(error, err);
+        return nil;
+    }
+    
+    NSData *data = [NSJSONSerialization dataWithJSONObject:[self dictionaryRepresentation]
+                                                   options:0
+                                                     error:&err];
+    
+    if (!data)
+    {
+        WFAssignPointer(error, err);
+        return nil;
+    }
+    
+    return data;
 }
 
 @end

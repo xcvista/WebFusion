@@ -23,4 +23,13 @@ WFBeginDecls
 
 @end
 
+@interface WFObject (WFObjectJSON)
+
+- (id)initWithJSONData:(NSData *)data error:(NSError **)error;
+
+- (BOOL)canRepresentInJSON;
+- (NSData *)JSONDataWithError:(NSError **)error;
+
+@end
+
 WFEndDecls

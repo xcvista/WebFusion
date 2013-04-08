@@ -31,12 +31,22 @@
     STAssertEqualObjects(login.pass, @"bar", @"");
 }
 
+- (void)testObjectSerializing
+{
+    WFLogin *login = nil;
+    NSDictionary *dictionary = @{@"user": @"foo", @"pass": @"bar"};
+    STAssertNotNil(login = [[WFLogin alloc] init], @"");
+    login.user = @"foo";
+    login.pass = @"bar";
+    STAssertTrue([[login dictionaryRepresentation] isEqualToDictionary:dictionary], @"");
+}
+
 - (void)testMethodForwarding
 {
     NSDictionary *deserializing = @{@"user": @"foo", @"pass": @"bar"};
     WFLogin *login = nil;
     STAssertNotNil(login = [[WFLogin alloc] initWithDictionary:deserializing], @"");
-    STAssertTrueNoThrow([[login login] isKindOfClass:[NSError class]], @"");
+    STAssertNil([login login], @"");
 }
 
 @end
