@@ -11,6 +11,11 @@
 
 @implementation WFCommonTest
 
+- (void)setUp
+{
+    NSLog(@"Testing WebFusion Version %@.", WFVersion);
+}
+
 - (void)testTimestamp
 {
     STAssertEquals(WFTimeIntervalFromTimestamp(50000), 50.0, @"");

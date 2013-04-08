@@ -281,7 +281,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd $SRCROOT/..\nprintf \"#import \\\"WFDecls.h\\\"\\nWFStaticStringValue(WFVersion, @\\\"%s\\\");\\n\" `git describe --always --tag` > $SRCROOT/WFVersion.m";
+			shellScript = "cd $SRCROOT/..\nprintf \"#import \\\"WFDecls.h\\\"\\nWFStaticStringValue(WFVersion, @\\\"%s\\\");\\n\" `git describe --always --tag` > $SRCROOT/FusionKit/WFVersion.m";
 		};
 		1DBAAAD61712A591002E32F7 /* git-version.plist */ = {
 			isa = PBXShellScriptBuildPhase;
