@@ -138,6 +138,9 @@
 		1DF66E7217143EF3007C3D7C /* GNUmakefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GNUmakefile; sourceTree = "<group>"; };
 		1DF66E7417144118007C3D7C /* GNUmakefile.postamble */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GNUmakefile.postamble; sourceTree = "<group>"; usesTabs = 1; };
 		1DF66E76171441B1007C3D7C /* GNUmakefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GNUmakefile; sourceTree = "<group>"; };
+		1DF66E7917144A79007C3D7C /* GNUmakefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GNUmakefile; sourceTree = "<group>"; usesTabs = 1; };
+		1DF66E7A17144A79007C3D7C /* GNUmakefile.postamble */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GNUmakefile.postamble; sourceTree = "<group>"; usesTabs = 1; };
+		1DF66E7B17144A79007C3D7C /* GNUmakefile.preamble */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GNUmakefile.preamble; sourceTree = "<group>"; usesTabs = 1; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -325,6 +328,7 @@
 				1DF66E4F1713B4EF007C3D7C /* WFSystem.m */,
 				1DF66E651713DDBD007C3D7C /* WFNewsCLI.h */,
 				1DF66E661713DDBD007C3D7C /* WFNewsCLI.m */,
+				1DF66E7817144A57007C3D7C /* Linux */,
 				1DBAAB1417131402002E32F7 /* Supporting Files */,
 			);
 			path = "WebFusion-CLI";
@@ -354,6 +358,16 @@
 				1DF66E7017143EDF007C3D7C /* GNUmakefile.preamble */,
 				1DF66E7217143EF3007C3D7C /* GNUmakefile */,
 				1DF66E7417144118007C3D7C /* GNUmakefile.postamble */,
+			);
+			name = Linux;
+			sourceTree = "<group>";
+		};
+		1DF66E7817144A57007C3D7C /* Linux */ = {
+			isa = PBXGroup;
+			children = (
+				1DF66E7917144A79007C3D7C /* GNUmakefile */,
+				1DF66E7A17144A79007C3D7C /* GNUmakefile.postamble */,
+				1DF66E7B17144A79007C3D7C /* GNUmakefile.preamble */,
 			);
 			name = Linux;
 			sourceTree = "<group>";
