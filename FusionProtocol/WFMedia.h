@@ -15,6 +15,10 @@ WFBeginDecls
 @property NSString *href;
 @property NSString *picThumbnail;
 
+#if defined(GNUSTEP)
+@property id _end;
+#endif
+
 @end
 
 WFEndDecls

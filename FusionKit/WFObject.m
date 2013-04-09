@@ -160,18 +160,7 @@
             
             id value = nil;
             
-#if defined(GNUSTEP)
-            NSLog(@"Handling property %@ on class %@", name, NSStringFromClass([self class]));
-#endif
-            
-            @try
-            {
-                value = [self valueForKey:name]; // Find the value, using KVO.
-            }
-            @catch (NSException *exception)
-            {
-                NSLog(@"KVO for property %@ failed.");
-            }
+            value = [self valueForKey:name]; // Find the value, using KVO.
             
             if (!value)
             {
