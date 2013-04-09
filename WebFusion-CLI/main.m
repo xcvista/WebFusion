@@ -252,7 +252,9 @@ int main(int argc, const char * argv[])
                     if ([systemObject respondsToSelector:selector])
                         objc_msgSend(systemObject, selector, @[@"system", command]);
                     else
-                        eoprintf(@"ERROR: Subject or system method not recognized: %@\n", command);
+                    {
+                        eoprintf(@"\aERROR: Subject or system method not recognized: %@\n", command);
+                    }
                 }
             }
             else
@@ -286,7 +288,7 @@ int main(int argc, const char * argv[])
                     else
                     {
                         // Nobody does this.
-                        eoprintf(@"ERROR: Subject or system method not recognized: %@ %@\n", subject, method);
+                        eoprintf(@"\aERROR: Subject or system method not recognized: %@ %@\n", subject, method);
                     }
                 }
                 

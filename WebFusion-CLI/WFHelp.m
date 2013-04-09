@@ -13,7 +13,19 @@
 
 - (void)_default:(NSArray *)args
 {
-    [self help:args];
+    if ([args count] > 2)
+    {
+        NSString *name = [args[2] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        id target = subjects[name];
+        if ([target respondsToSelector:@selector(help:)])
+            [target help:@[name, @"help"]];
+        else
+            eoprintf(@"\aERROR: Cannot find help for subject %@.\n", name);
+    }
+    else
+    {
+        [self help:args];
+    }
 }
 
 - (void)help:(NSArray *)args
@@ -36,46 +48,6 @@
 {
     eoprintf(@"WebFusion CLI, version 4.0 (git version %@)\n", WFVersion());
     eoprintf(@"Copyright 2013, myWOrld Creations, all rights reserved.\n\n");
-}
-
-- (BOOL)respondsToSelector:(SEL)aSelector
-{
-    if ([super respondsToSelector:aSelector])
-        return YES;
-    else
-    {
-        NSString *name = NSStringFromSelector(aSelector);
-        name = [name substringToIndex:[name length] - 1];
-        id target = subjects[name];
-        SEL action = @selector(help:);
-        return [target respondsToSelector:action];
-    }
-}
-
-- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector
-{
-    if ([super respondsToSelector:aSelector])
-        return [super methodSignatureForSelector:aSelector];
-    else
-        return [NSMethodSignature signatureWithObjCTypes:"v@:@"];
-}
-
-- (void)forwardInvocation:(NSInvocation *)anInvocation
-{
-    NSString *name = NSStringFromSelector([anInvocation selector]);
-    name = [name substringToIndex:[name length] - 1];
-    id target = subjects[name];
-    SEL action = @selector(help:);
-    [anInvocation setTarget:target];
-    [anInvocation setSelector:action];
-    if (target && [target respondsToSelector:action])
-    {
-        [anInvocation invoke];
-    }
-    else
-    {
-        eoprintf(@"ERROR: Cannot find help on subject %@.", name);
-    }
 }
 
 @end
