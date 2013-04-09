@@ -55,6 +55,9 @@
 		1DF66E6917142B48007C3D7C /* GNUmakefile in Resources */ = {isa = PBXBuildFile; fileRef = 1DF66E6817142B48007C3D7C /* GNUmakefile */; };
 		1DF66E6B17142D0C007C3D7C /* GNUmakefile.preamble in Resources */ = {isa = PBXBuildFile; fileRef = 1DF66E6A17142D0C007C3D7C /* GNUmakefile.preamble */; };
 		1DF66E6D17143032007C3D7C /* GNUmakefile.postamble in Resources */ = {isa = PBXBuildFile; fileRef = 1DF66E6C17143032007C3D7C /* GNUmakefile.postamble */; };
+		1DF66E7117143EDF007C3D7C /* GNUmakefile.preamble in Resources */ = {isa = PBXBuildFile; fileRef = 1DF66E7017143EDF007C3D7C /* GNUmakefile.preamble */; };
+		1DF66E7317143EF3007C3D7C /* GNUmakefile in Resources */ = {isa = PBXBuildFile; fileRef = 1DF66E7217143EF3007C3D7C /* GNUmakefile */; };
+		1DF66E7517144118007C3D7C /* GNUmakefile.postamble in Resources */ = {isa = PBXBuildFile; fileRef = 1DF66E7417144118007C3D7C /* GNUmakefile.postamble */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -131,6 +134,9 @@
 		1DF66E6817142B48007C3D7C /* GNUmakefile */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; fileEncoding = 4; path = GNUmakefile; sourceTree = "<group>"; usesTabs = 1; };
 		1DF66E6A17142D0C007C3D7C /* GNUmakefile.preamble */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; fileEncoding = 4; path = GNUmakefile.preamble; sourceTree = "<group>"; usesTabs = 1; };
 		1DF66E6C17143032007C3D7C /* GNUmakefile.postamble */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; fileEncoding = 4; path = GNUmakefile.postamble; sourceTree = "<group>"; usesTabs = 1; };
+		1DF66E7017143EDF007C3D7C /* GNUmakefile.preamble */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GNUmakefile.preamble; sourceTree = "<group>"; };
+		1DF66E7217143EF3007C3D7C /* GNUmakefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GNUmakefile; sourceTree = "<group>"; };
+		1DF66E7417144118007C3D7C /* GNUmakefile.postamble */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GNUmakefile.postamble; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,9 +244,7 @@
 				1DBAAAE01712BCB4002E32F7 /* WFWrapper.m */,
 				1DBAAAE31712C181002E32F7 /* WFConnection.h */,
 				1DBAAAE41712C181002E32F7 /* WFConnection.m */,
-				1DF66E6A17142D0C007C3D7C /* GNUmakefile.preamble */,
-				1DF66E6817142B48007C3D7C /* GNUmakefile */,
-				1DF66E6C17143032007C3D7C /* GNUmakefile.postamble */,
+				1DF66E6E17143D14007C3D7C /* Linux */,
 				1DBAAA9D17129BDB002E32F7 /* Supporting Files */,
 			);
 			path = FusionKit;
@@ -292,6 +296,7 @@
 				1DF66E5A1713D81C007C3D7C /* WFUniversalContact.m */,
 				1DF66E5D1713D887007C3D7C /* WFMedia.h */,
 				1DF66E5E1713D887007C3D7C /* WFMedia.m */,
+				1DF66E6F17143ED0007C3D7C /* Linux */,
 				1DBAAAF717130A95002E32F7 /* Supporting Files */,
 			);
 			path = FusionProtocol;
@@ -329,6 +334,26 @@
 				1DBAAB1517131402002E32F7 /* WebFusion-CLI-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1DF66E6E17143D14007C3D7C /* Linux */ = {
+			isa = PBXGroup;
+			children = (
+				1DF66E6A17142D0C007C3D7C /* GNUmakefile.preamble */,
+				1DF66E6817142B48007C3D7C /* GNUmakefile */,
+				1DF66E6C17143032007C3D7C /* GNUmakefile.postamble */,
+			);
+			name = Linux;
+			sourceTree = "<group>";
+		};
+		1DF66E6F17143ED0007C3D7C /* Linux */ = {
+			isa = PBXGroup;
+			children = (
+				1DF66E7017143EDF007C3D7C /* GNUmakefile.preamble */,
+				1DF66E7217143EF3007C3D7C /* GNUmakefile */,
+				1DF66E7417144118007C3D7C /* GNUmakefile.postamble */,
+			);
+			name = Linux;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -493,6 +518,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DBAAAFB17130A95002E32F7 /* InfoPlist.strings in Resources */,
+				1DF66E7117143EDF007C3D7C /* GNUmakefile.preamble in Resources */,
+				1DF66E7317143EF3007C3D7C /* GNUmakefile in Resources */,
+				1DF66E7517144118007C3D7C /* GNUmakefile.postamble in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

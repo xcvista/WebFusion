@@ -1,0 +1,6 @@
+
+before-all::
+	printf "{ \"git-version\" = \"%s\"; }\n" `git describe --always --tag` > git-version.plist
+
+after-clean::
+	-rm git-version.plist
