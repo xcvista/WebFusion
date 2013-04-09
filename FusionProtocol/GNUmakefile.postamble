@@ -6,7 +6,9 @@ after-all::
 	ln FusionProtocol.framework/Headers FusionProtocol
 	ln FusionProtocol.framework/libFusionProtocol.so libFusionProtocol.so
 
+before-clean::
+	-rm FusionProtocol
+	-rm libFusionProtocol.so
+
 after-clean::
 	-rm git-version.plist
-	-rm FusionProtocol
-	-rm libFusinProtocol.so

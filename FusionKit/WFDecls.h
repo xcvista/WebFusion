@@ -54,6 +54,18 @@ typeof(pointer) __ptr = pointer; \
 if (__ptr) *__ptr = value; \
 } while(0)
 
+#if !defined(NS_INLINE)
+#if defined(__GNUC__)
+#define NS_INLINE static __inline__ __attribute__((always_inline))
+#elif defined(__MWERKS__) || defined(__cplusplus)
+#define NS_INLINE static inline
+#elif defined(_MSC_VER)
+#define NS_INLINE static __inline
+#elif TARGET_OS_WIN32
+#define NS_INLINE static __inline__
+#endif
+#endif
+
 WFEndDecls
 
 #endif // FusionKit_D_WFDecls_h

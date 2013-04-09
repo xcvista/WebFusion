@@ -6,8 +6,10 @@ after-all::
 	ln -s FusionKit.framework/Headers FusionKit
 	ln -s FusionKit.framework/libFusionKit.so libFusionKit.so
 
+before-clean::
+	-rm FusionKit
+	-rm libFusionKit.so
 
 after-clean::
 	-rm git-version.plist
-	-rm FusionKit
-	-rm libFusionKit.soß
+	
