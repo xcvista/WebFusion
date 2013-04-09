@@ -59,6 +59,10 @@
         }
         error = nil;
         
+#if defined(GNUSTEP)
+        NSLog(@"Object %@ get from method %@ with data %@.", NSStringFromClass([self class]), methodName, [[NSString alloc] initWithData:downlinkData encoding:NSUTF8StringEncoding]);
+#endif
+        
         id downlinkObject = [NSJSONSerialization JSONObjectWithData:downlinkData
                                                             options:0
                                                               error:&error];
