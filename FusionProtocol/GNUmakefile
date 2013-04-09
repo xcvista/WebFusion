@@ -24,7 +24,7 @@ FusionProtocol_RESOURCE_FILES += git-version.plist
 FusionProtocol_LANGUAGES += en
 FusionProtocol_CURRENT_VERSION_NAME := C
 FusionProtocol_VERSION := 1.2
-FusionProtocol_LDFLAGS := -lFusionKit
+FusionProtocol_LIBRARIES_DEPEND_UPON += -lFusionKit
 
 # Option include to set any additional variables
 -include GNUmakefile.preamble
