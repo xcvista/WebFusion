@@ -21,7 +21,7 @@
 {
     if (self = [super init])
     {
-        self.news = [NSMutableOrderedSet orderedSet];
+        self.news = [NSMutableArray array];
     }
     return self;
 }
@@ -49,7 +49,7 @@
         return;
     }
     
-    self.news = [NSMutableOrderedSet orderedSetWithArray:news];
+    self.news = [NSMutableArray arrayWithArray:news];
     [self.news sortUsingComparator:^NSComparisonResult(WFNews *obj1, WFNews *obj2) {
         if (obj1.publishTime > obj2.publishTime)
             return NSOrderedAscending;

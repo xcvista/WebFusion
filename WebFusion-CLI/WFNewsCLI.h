@@ -10,6 +10,6 @@
 
 @interface WFNewsCLI : NSObject
 
-@property NSMutableOrderedSet *news;
+@property NSMutableArray *news;
 
 @end
