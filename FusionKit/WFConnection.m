@@ -12,6 +12,10 @@
 #import <objc/runtime.h>
 #import <objc/message.h>
 
+#if defined(GNUSTEP)
+#import <objc/objc-arc.h>
+#endif
+
 @implementation WFObject (WFSending)
 
 - (void)forwardInvocation:(NSInvocation *)anInvocation
@@ -93,7 +97,11 @@
         
     } while (0);
     
+#if defined(GNUSTEP)
+    objc_retain(value);
+#else
     CFRetain((__bridge CFTypeRef)(value));
+#endif
     [anInvocation setReturnValue:&value];
 }
 
