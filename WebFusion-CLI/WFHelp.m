@@ -36,7 +36,7 @@
 - (void)help:(NSArray *)args
 {
     eoprintf(@"WebFusion CLI, version 4.0 (git version %@)\n", WFVersion());
-    eoprintf(@"Copyright 2013, myWOrld Creations, all rights reserved.\n\n");
+    eoprintf(@"Copyright 2013, myWorld Creations, all rights reserved.\n\n");
     eoprintf(@"Type \"<subject-name> help\" to acquire help on a certain subject.\n");
     eoprintf(@"Type \"help subjects\" to acquire a list of subjects.\n");
 }
@@ -52,7 +52,7 @@
 - (void)version:(NSArray *)args
 {
     eoprintf(@"WebFusion CLI, version 4.0 (git version %@)\n", WFVersion());
-    eoprintf(@"Copyright 2013, myWOrld Creations, all rights reserved.\n\n");
+    eoprintf(@"Copyright 2013, myWorld Creations, all rights reserved.\n\n");
 }
 
 @end
