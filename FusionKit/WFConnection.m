@@ -70,7 +70,6 @@
             if ([downlinkObject isKindOfClass:[NSDictionary class]])
             {
                 value = [[class alloc] initWithDictionary:downlinkObject];
-                CFRetain((__bridge CFTypeRef)(value));
             }
             else if ([downlinkObject isKindOfClass:[NSArray class]])
             {
@@ -94,6 +93,7 @@
         
     } while (0);
     
+    CFRetain((__bridge CFTypeRef)(value));
     [anInvocation setReturnValue:&value];
 }
 

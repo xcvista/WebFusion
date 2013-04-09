@@ -10,4 +10,13 @@
 
 @implementation WFUniversalContact
 
+- (NSString *)displayName
+{
+    return
+    ([self.scrName isEqualToString:self.dispName]) ? self.scrName :
+    ([self.scrName length] == 0) ? self.dispName :
+    ([self.dispName length] == 0) ? self.scrName :
+    [NSString stringWithFormat:@"%@ (%@)", self.dispName, self.scrName];
+}
+
 @end

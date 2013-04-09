@@ -12,6 +12,11 @@
 
 @implementation WFSystem
 
++ (void)load
+{
+    WFRegisterSubject(@"system", [[self alloc] init]);
+}
+
 - (void)_default:(NSArray *)args
 {
     [self help:args];

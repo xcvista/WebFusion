@@ -11,6 +11,11 @@
 
 @implementation WFHelp
 
++ (void)load
+{
+    WFRegisterSubject(@"help", [[self alloc] init]);
+}
+
 - (void)_default:(NSArray *)args
 {
     if ([args count] > 2)

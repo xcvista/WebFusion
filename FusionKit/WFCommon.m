@@ -16,16 +16,6 @@ WFStaticStringValue(WFDefaultTrueValue, @"+");
 WFStaticStringValue(WFDefaultFalseValue, @"-");
 WFStaticStringValue(WFErrorDoamin, @"info.maxchan.webfusion-v4");
 
-WFTimestamp WFTimestampFromTimeInterval(NSTimeInterval timeInterval)
-{
-    return timeInterval * 1000;
-}
-
-NSTimeInterval WFTimeIntervalFromTimestamp(WFTimestamp timestamp)
-{
-    return (NSTimeInterval)timestamp / 1000.0;
-}
-
 NSString *WFVersion(void)
 {
     NSBundle *bundle = WFFrameworkBundle();

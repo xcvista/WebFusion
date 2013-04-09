@@ -119,11 +119,6 @@ int main(int argc, const char * argv[])
         eoprintf(@"\n\nDear %@, welcome to %@.\n", username, [connection.serverRoot absoluteString]);
         eoprintf(@"To get help for this command line, issue \"help\".\n\n");
         
-        subjects = @{
-                     @"help": [[WFHelp alloc] init],
-                     @"system": [[WFSystem alloc] init]
-                     };
-        
         NSString *prompt = (getuid()) ? @"WebFusion$ " : @"WebFusion# ";
         NSString *prompt2 = @"         > ";
         
@@ -299,9 +294,16 @@ int main(int argc, const char * argv[])
     return 0;
 }
 
-NSDictionary *subjects;
+NSMutableDictionary *subjects;
 NSString *username;
 NSURL *serverRoot;
+
+void WFRegisterSubject(NSString *name, id object)
+{
+    if (!subjects)
+        subjects = [NSMutableDictionary dictionary];
+    subjects[name] = object;
+}
 
 ssize_t getpass2(char **lineptr, size_t *n, FILE *stream)
 {

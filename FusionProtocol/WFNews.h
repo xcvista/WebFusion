@@ -7,6 +7,7 @@
 //
 
 #import <FusionKit/FusionKit.h>
+#import <FusionProtocol/NSDate+WFTimestamp.h>
 
 WFBeginDecls
 

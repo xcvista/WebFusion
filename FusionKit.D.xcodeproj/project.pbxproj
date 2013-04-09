@@ -49,6 +49,9 @@
 		1DF66E5C1713D81C007C3D7C /* WFUniversalContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF66E5A1713D81C007C3D7C /* WFUniversalContact.m */; };
 		1DF66E5F1713D887007C3D7C /* WFMedia.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DF66E5D1713D887007C3D7C /* WFMedia.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1DF66E601713D887007C3D7C /* WFMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF66E5E1713D887007C3D7C /* WFMedia.m */; };
+		1DF66E631713DAC5007C3D7C /* NSDate+WFTimestamp.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DF66E611713DAC4007C3D7C /* NSDate+WFTimestamp.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1DF66E641713DAC5007C3D7C /* NSDate+WFTimestamp.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF66E621713DAC5007C3D7C /* NSDate+WFTimestamp.m */; };
+		1DF66E671713DDBD007C3D7C /* WFNewsCLI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF66E661713DDBD007C3D7C /* WFNewsCLI.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -118,6 +121,10 @@
 		1DF66E5A1713D81C007C3D7C /* WFUniversalContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFUniversalContact.m; sourceTree = "<group>"; };
 		1DF66E5D1713D887007C3D7C /* WFMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WFMedia.h; sourceTree = "<group>"; };
 		1DF66E5E1713D887007C3D7C /* WFMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFMedia.m; sourceTree = "<group>"; };
+		1DF66E611713DAC4007C3D7C /* NSDate+WFTimestamp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+WFTimestamp.h"; sourceTree = "<group>"; };
+		1DF66E621713DAC5007C3D7C /* NSDate+WFTimestamp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+WFTimestamp.m"; sourceTree = "<group>"; };
+		1DF66E651713DDBD007C3D7C /* WFNewsCLI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WFNewsCLI.h; sourceTree = "<group>"; };
+		1DF66E661713DDBD007C3D7C /* WFNewsCLI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFNewsCLI.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,6 +271,8 @@
 			isa = PBXGroup;
 			children = (
 				1DBAAAFD17130A95002E32F7 /* FusionProtocol.h */,
+				1DF66E611713DAC4007C3D7C /* NSDate+WFTimestamp.h */,
+				1DF66E621713DAC5007C3D7C /* NSDate+WFTimestamp.m */,
 				1DBAAB0617130B0C002E32F7 /* WFLogin.h */,
 				1DBAAB0717130B0C002E32F7 /* WFLogin.m */,
 				1DF66E511713D6C6007C3D7C /* WFNewsRequest.h */,
@@ -298,6 +307,8 @@
 				1DF66E4C1713B1AB007C3D7C /* WFHelp.m */,
 				1DF66E4E1713B4EF007C3D7C /* WFSystem.h */,
 				1DF66E4F1713B4EF007C3D7C /* WFSystem.m */,
+				1DF66E651713DDBD007C3D7C /* WFNewsCLI.h */,
+				1DF66E661713DDBD007C3D7C /* WFNewsCLI.m */,
 				1DBAAB1417131402002E32F7 /* Supporting Files */,
 			);
 			path = "WebFusion-CLI";
@@ -339,6 +350,7 @@
 				1DF66E571713D71F007C3D7C /* WFNews.h in Headers */,
 				1DF66E5B1713D81C007C3D7C /* WFUniversalContact.h in Headers */,
 				1DF66E5F1713D887007C3D7C /* WFMedia.h in Headers */,
+				1DF66E631713DAC5007C3D7C /* NSDate+WFTimestamp.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -534,6 +546,7 @@
 				1DF66E581713D71F007C3D7C /* WFNews.m in Sources */,
 				1DF66E5C1713D81C007C3D7C /* WFUniversalContact.m in Sources */,
 				1DF66E601713D887007C3D7C /* WFMedia.m in Sources */,
+				1DF66E641713DAC5007C3D7C /* NSDate+WFTimestamp.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,6 +557,7 @@
 				1DBAAB1317131402002E32F7 /* main.m in Sources */,
 				1DF66E4D1713B1AB007C3D7C /* WFHelp.m in Sources */,
 				1DF66E501713B4EF007C3D7C /* WFSystem.m in Sources */,
+				1DF66E671713DDBD007C3D7C /* WFNewsCLI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

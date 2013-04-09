@@ -8,6 +8,8 @@
 
 #import <FusionKit/FusionKit.h>
 
+#import <FusionProtocol/NSDate+WFTimestamp.h>
+
 #import <FusionProtocol/WFLogin.h>
 #import <FusionProtocol/WFNewsRequest.h>
 #import <FusionProtocol/WFNews.h>

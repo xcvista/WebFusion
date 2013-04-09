@@ -19,13 +19,15 @@
 WFBeginDecls
 
 #define eprintf(format, ...) fprintf(stderr, format, ##__VA_ARGS__)
-#define osprintf(format, ...) [WFSTR(format, ##__VA_ARGS__) cStringUsingEncoding:[NSString defaultCStringEncoding]]
+#define osprintf(format, ...) [WFSTR(format, ##__VA_ARGS__) cStringUsingEncoding:NSUTF8StringEncoding]
 #define oprintf(format, ...) printf("%s", osprintf(format, ##__VA_ARGS__))
 #define eoprintf(format, ...) eprintf("%s", osprintf(format, ##__VA_ARGS__))
 
-WFExtern NSDictionary *subjects;
+WFExtern NSMutableDictionary *subjects;
 WFExtern NSString *username;
 WFExtern NSURL *serverRoot;
+
+WFExtern void WFRegisterSubject(NSString *, id);
 
 ssize_t getpass2(char **lineptr, size_t *n, FILE *stream);
 

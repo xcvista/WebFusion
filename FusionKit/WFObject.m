@@ -255,3 +255,15 @@
 }
 
 @end
+
+@implementation WFObject (WFEquality)
+
+- (BOOL)isEqual:(id)object
+{
+    if ([self respondsToSelector:@selector(ID)] && [object respondsToSelector:@selector(ID)])
+        return [[self ID] isEqual:[object ID]];
+    else
+        return [super isEqual:object];
+}
+
+@end

@@ -7,8 +7,11 @@
 //
 
 #import <FusionKit/FusionKit.h>
+#import <FusionProtocol/NSDate+WFTimestamp.h>
 
 WFBeginDecls
+
+WFStaticString(WFNewsTypeNone, nil);
 
 @interface WFNewsRequest : WFObject
 
@@ -17,6 +20,11 @@ WFBeginDecls
 @property NSString *type;
 
 - (NSArray *)getWhatzNew;
+
++ (NSArray *)newsBeforeEpoch:(NSDate *)epoch
+                       count:(NSUInteger)count
+                        type:(NSString *)type
+                       error:(NSError **)error;
 
 @end
 

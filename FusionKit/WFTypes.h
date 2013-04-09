@@ -13,10 +13,6 @@
 
 WFBeginDecls
 
-typedef uint64_t WFTimestamp;
-WFExtern WFTimestamp WFTimestampFromTimeInterval(NSTimeInterval);
-WFExtern NSTimeInterval WFTimeIntervalFromTimestamp(WFTimestamp);
-
 WFExtern NSString *WFVersion(void);
 
 WFEndDecls

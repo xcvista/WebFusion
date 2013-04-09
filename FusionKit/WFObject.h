@@ -32,4 +32,11 @@ WFBeginDecls
 
 @end
 
+@interface WFObject (WFEquality)
+
+- (id)ID;
+- (BOOL)isEqual:(id)object;
+
+@end
+
 WFEndDecls

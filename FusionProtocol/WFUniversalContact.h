@@ -19,6 +19,8 @@ WFBeginDecls
 @property id svrId;
 @property id ID;
 
+- (NSString *)displayName;
+
 @end
 
 WFEndDecls
