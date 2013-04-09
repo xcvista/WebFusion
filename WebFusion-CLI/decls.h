@@ -16,11 +16,19 @@
 #import <readline/history.h>
 #import <termios.h>
 
+WFBeginDecls
+
 #define eprintf(format, ...) fprintf(stderr, format, ##__VA_ARGS__)
 #define osprintf(format, ...) [WFSTR(format, ##__VA_ARGS__) cStringUsingEncoding:[NSString defaultCStringEncoding]]
 #define oprintf(format, ...) printf("%s", osprintf(format, ##__VA_ARGS__))
 #define eoprintf(format, ...) eprintf("%s", osprintf(format, ##__VA_ARGS__))
 
+WFExtern NSDictionary *subjects;
+WFExtern NSString *username;
+WFExtern NSURL *serverRoot;
+
 ssize_t getpass2(char **lineptr, size_t *n, FILE *stream);
+
+WFEndDecls
 
 #endif

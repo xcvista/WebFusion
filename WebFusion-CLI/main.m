@@ -7,17 +7,24 @@
 //
 
 #import "decls.h"
+#import "WFHelp.h"
+#import "WFSystem.h"
+#import <objc/runtime.h>
+#import <objc/message.h>
 
 int main(int argc, const char * argv[])
 {
 
+    if (!getuid())
+        eprintf("WARNING: Please do not run WebFusion as root user.\n");
+    
     @autoreleasepool {
         
         NSProcessInfo *processInfo = [NSProcessInfo processInfo];
         NSArray *args = [processInfo arguments];
-        NSString *username = NSUserName();
+        username = NSUserName();
         NSString *password = nil;
-        NSURL *serverRoot = nil;
+        serverRoot = nil;
         
         // Process command-line arguments to extract username and password.
         for (NSUInteger i = 1; i < [args count]; i++)
@@ -77,7 +84,9 @@ int main(int argc, const char * argv[])
             char *buf = NULL;
             size_t size = 0;
             
-            eoprintf(@"Password for %@@%@: ", username, [connection.serverRoot absoluteString]);
+            NSURL *root = [connection serverRoot];
+            
+            eoprintf(@"Password for %@://%@@%@%@: ", [root scheme], username, [root host], [root path]);
             if (getpass2(&buf, &size, stdin) < 0)
             {
                 eoprintf(@"ERROR: Cannot read password.\n");
@@ -107,20 +116,190 @@ int main(int argc, const char * argv[])
         }
         err = nil;
         
-        eoprintf(@"Dear %@, welcome to %@.\n", username, [connection.serverRoot absoluteString]);
+        eoprintf(@"\n\nDear %@, welcome to %@.\n", username, [connection.serverRoot absoluteString]);
         eoprintf(@"To get help for this command line, issue \"help\".\n\n");
         
+        subjects = @{
+                     @"help": [[WFHelp alloc] init],
+                     @"system": [[WFSystem alloc] init]
+                     };
+        
         NSString *prompt = (getuid()) ? @"WebFusion$ " : @"WebFusion# ";
+        NSString *prompt2 = @"         > ";
+        
+        BOOL catchUp = NO;
+        unichar quote = 0;
+        NSMutableArray *arguments = nil;
+        NSMutableString *buf = nil;
         
         while (1)
         {
             // Get the command line.
+            char *buffer = readline(osprintf(@"%@", (catchUp || quote) ? prompt2 : prompt));
+            NSString *line = [[NSString stringWithCString:buffer encoding:[NSString defaultCStringEncoding]] stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+            add_history(buffer);
+            free(buffer);
             
+            if (!(catchUp || quote))
+            {
+                arguments = [NSMutableArray array];
+                buf = [NSMutableString string];
+            }
+            else if (quote)
+            {
+                [buf appendString:@"\n"];
+            }
+                
+            catchUp = NO;
+            
+            for (NSUInteger i = 0; i < [line length]; i++)
+            {
+                unichar ch = [line characterAtIndex:i];
+                
+                switch (ch)
+                {
+                    case '\'':
+                    case '\"': // Quotes
+                    {
+                        if (!quote)
+                        {
+                            quote = ch;
+                            break;
+                        }
+                        else if (quote == ch)
+                        {
+                            quote = 0;
+                            break;
+                        }
+                    }
+                    default:
+                    {
+                        if (quote)
+                        {
+                            [buf appendFormat:@"%C", ch];
+                        }
+                        else
+                        {
+                            switch (ch)
+                            {
+                                case '\\': // Escapes
+                                {
+                                    if (++i < [line length])
+                                    {
+                                        ch = [line characterAtIndex:i];
+                                        
+                                        switch (ch)
+                                        {
+                                            case 'n':
+                                                ch = '\n';
+                                                break;
+                                            case 't':
+                                                ch = '\t';
+                                                break;
+                                            default:
+                                                break;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        catchUp = YES;
+                                        break;
+                                    }
+                                }
+                                case ' ':
+                                case '\t':
+                                {
+                                    // Word breaks.
+                                    if ([buf length])
+                                    {
+                                        [arguments addObject:[buf copy]];
+                                        buf = [NSMutableString string];
+                                    }
+                                    break;
+                                }
+                                default:
+                                    [buf appendFormat:@"%C", ch];
+                                    break;
+                            }
+                        }
+                        break;
+                    }
+                }
+            }
+            
+            if ([buf length] && !(quote || catchUp))
+            {
+                [arguments addObject:[buf copy]];
+            }
+            
+            if (catchUp || quote)
+                continue;
+            
+            if ([arguments count] == 0)
+                continue;
+            else if ([arguments count] == 1)
+            {
+                NSString *command = [arguments[0] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                
+                id namedSubject = subjects[command];
+                SEL selector = @selector(_default:);
+                if ([namedSubject respondsToSelector:selector])
+                    objc_msgSend(namedSubject, selector, @[command, @"_default"]);
+                else
+                {
+                    id systemObject = subjects[@"system"];
+                    selector = NSSelectorFromString(WFSTR(@"%@:", command));
+                    if ([systemObject respondsToSelector:selector])
+                        objc_msgSend(systemObject, selector, @[@"system", command]);
+                    else
+                        eoprintf(@"ERROR: Subject or system method not recognized: %@\n", command);
+                }
+            }
+            else
+            {
+                NSString *subject = [arguments[0] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                NSString *method = [arguments[1] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                
+                id namedSubject = subjects[subject];
+                SEL selector = NSSelectorFromString(WFSTR(@"%@:", method));
+                SEL defaultSelector = @selector(_default:);
+                if ([namedSubject respondsToSelector:selector]) // Mark.
+                    objc_msgSend(namedSubject, selector, arguments);
+                else if ([namedSubject respondsToSelector:defaultSelector])
+                {
+                    // Gotta use default handler
+                    NSMutableArray *args = [arguments mutableCopy];
+                    [args insertObject:@"_default" atIndex:1];
+                    objc_msgSend(namedSubject, defaultSelector, args);
+                }
+                else
+                {
+                    // Using system object.
+                    id defaultSubject = subjects[@"system"];
+                    selector = NSSelectorFromString(WFSTR(@"%@:", subject));
+                    if ([defaultSubject respondsToSelector:selector])
+                    {
+                        NSMutableArray *args = [arguments mutableCopy];
+                        [args insertObject:@"system" atIndex:0];
+                        objc_msgSend(defaultSubject, selector, args);
+                    }
+                    else
+                    {
+                        // Nobody does this.
+                        eoprintf(@"ERROR: Subject or system method not recognized: %@ %@\n", subject, method);
+                    }
+                }
+                
+            }
         }
         
     }
     return 0;
 }
+
+NSDictionary *subjects;
+NSString *username;
+NSURL *serverRoot;
 
 ssize_t getpass2(char **lineptr, size_t *n, FILE *stream)
 {

@@ -39,6 +39,8 @@
 		1DBAAB1B1713140E002E32F7 /* FusionKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DBAAA9317129BDB002E32F7 /* FusionKit.framework */; };
 		1DBAAB1C1713140E002E32F7 /* FusionProtocol.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DBAAAF417130A95002E32F7 /* FusionProtocol.framework */; };
 		1DBAAB1E17131436002E32F7 /* libreadline.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DBAAB1D17131436002E32F7 /* libreadline.dylib */; };
+		1DF66E4D1713B1AB007C3D7C /* WFHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF66E4C1713B1AB007C3D7C /* WFHelp.m */; };
+		1DF66E501713B4EF007C3D7C /* WFSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF66E4F1713B4EF007C3D7C /* WFSystem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -96,6 +98,10 @@
 		1DBAAB1517131402002E32F7 /* WebFusion-CLI-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WebFusion-CLI-Prefix.pch"; sourceTree = "<group>"; };
 		1DBAAB1D17131436002E32F7 /* libreadline.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libreadline.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/libreadline.dylib; sourceTree = DEVELOPER_DIR; };
 		1DBAAB1F1713186E002E32F7 /* decls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = decls.h; sourceTree = "<group>"; };
+		1DF66E4B1713B1AB007C3D7C /* WFHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WFHelp.h; sourceTree = "<group>"; };
+		1DF66E4C1713B1AB007C3D7C /* WFHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFHelp.m; sourceTree = "<group>"; };
+		1DF66E4E1713B4EF007C3D7C /* WFSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WFSystem.h; sourceTree = "<group>"; };
+		1DF66E4F1713B4EF007C3D7C /* WFSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFSystem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,6 +270,10 @@
 			children = (
 				1DBAAB1F1713186E002E32F7 /* decls.h */,
 				1DBAAB1217131402002E32F7 /* main.m */,
+				1DF66E4B1713B1AB007C3D7C /* WFHelp.h */,
+				1DF66E4C1713B1AB007C3D7C /* WFHelp.m */,
+				1DF66E4E1713B4EF007C3D7C /* WFSystem.h */,
+				1DF66E4F1713B4EF007C3D7C /* WFSystem.m */,
 				1DBAAB1417131402002E32F7 /* Supporting Files */,
 			);
 			path = "WebFusion-CLI";
@@ -500,6 +510,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DBAAB1317131402002E32F7 /* main.m in Sources */,
+				1DF66E4D1713B1AB007C3D7C /* WFHelp.m in Sources */,
+				1DF66E501713B4EF007C3D7C /* WFSystem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -856,6 +868,7 @@
 				1DBAAAA817129BDB002E32F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1DBAAAC51712A311002E32F7 /* Build configuration list for PBXNativeTarget "FusionKitTest" */ = {
 			isa = XCConfigurationList;
@@ -864,6 +877,7 @@
 				1DBAAAC71712A311002E32F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1DBAAB0017130A95002E32F7 /* Build configuration list for PBXNativeTarget "FusionProtocol" */ = {
 			isa = XCConfigurationList;
@@ -872,6 +886,7 @@
 				1DBAAB0217130A95002E32F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1DBAAB1817131402002E32F7 /* Build configuration list for PBXNativeTarget "WebFusion-CLI" */ = {
 			isa = XCConfigurationList;
@@ -880,6 +895,7 @@
 				1DBAAB1A17131402002E32F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
