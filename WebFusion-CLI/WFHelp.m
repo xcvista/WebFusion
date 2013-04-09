@@ -46,13 +46,12 @@
     eoprintf(@"The following is a list of avalible subjects:\n");
     for (NSString *name in subjects)
         eoprintf(@"> %@\n", name);
-    eprintf("\n");
 }
 
 - (void)version:(NSArray *)args
 {
     eoprintf(@"WebFusion CLI, version 4.0 (git version %@)\n", WFVersion());
-    eoprintf(@"Copyright 2013, myWorld Creations, all rights reserved.\n\n");
+    eoprintf(@"Copyright 2013, myWorld Creations, all rights reserved.\n");
 }
 
 @end

@@ -78,8 +78,10 @@ int main(int argc, const char * argv[])
         
         eoprintf(@"Connectiong to server at %@...\n", [connection.serverRoot absoluteString]);
         
+    password:
+        
         // In case we do not have a password, get it from the console.
-        if (!password)
+        while (![password length])
         {
             char *buf = NULL;
             size_t size = 0;
@@ -87,17 +89,22 @@ int main(int argc, const char * argv[])
             NSURL *root = [connection serverRoot];
             
             eoprintf(@"Password for %@://%@@%@%@: ", [root scheme], username, [root host], [root path]);
-            if (getpass2(&buf, &size, stdin) < 0)
+            if ((getpass2(&buf, &size, stdin) < 0) || !buf)
             {
-                eoprintf(@"ERROR: Cannot read password.\n");
+                eoprintf(@"\nERROR: Cannot read password.\n");
                 exit(-1);
             }
             password = [[NSString stringWithCString:buf
                                            encoding:[NSString defaultCStringEncoding]] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             free(buf);
+            
+            if (![password length])
+                eoprintf(@"\nERROR: Empty password.\n");
         }
         
         NSError *err = nil;
+        
+        eprintf("\n");
         
         if (![WFLogin loginAsUser:username
                      withPassword:password
@@ -105,18 +112,19 @@ int main(int argc, const char * argv[])
         {
             if (err)
             {
-                eoprintf(@"ERROR: Login failed: %@", [err localizedDescription]);
+                eoprintf(@"ERROR: Login failed: %@\n", [err localizedDescription]);
                 exit(1);
             }
             else
             {
-                eoprintf(@"ERROR: Login failed: Bad password.");
-                exit(1);
+                eoprintf(@"ERROR: Login failed: Bad password.\n");
+                password = nil;
+                goto password;
             }
         }
         err = nil;
         
-        eoprintf(@"\n\nDear %@, welcome to %@.\n", username, [connection.serverRoot absoluteString]);
+        eoprintf(@"\nDear %@, welcome to %@.\n", username, [connection.serverRoot absoluteString]);
         eoprintf(@"To get help for this command line, issue \"help\".\n\n");
         
         NSString *prompt = (getuid()) ? @"WebFusion$ " : @"WebFusion# ";
@@ -131,6 +139,11 @@ int main(int argc, const char * argv[])
         {
             // Get the command line.
             char *buffer = readline(osprintf(@"%@", (catchUp || quote) ? prompt2 : prompt));
+            if (!buffer)
+            {
+                eprintf("\a\nERROR: Cannot read command.\n");
+                exit(1);
+            }
             NSString *line = [[NSString stringWithCString:buffer encoding:[NSString defaultCStringEncoding]] stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
             add_history(buffer);
             free(buffer);

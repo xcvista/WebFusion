@@ -52,11 +52,11 @@
     self.news = [NSMutableOrderedSet orderedSetWithArray:news];
     [self.news sortUsingComparator:^NSComparisonResult(WFNews *obj1, WFNews *obj2) {
         if (obj1.publishTime > obj2.publishTime)
-            return NSOrderedDescending;
+            return NSOrderedAscending;
         else if (obj1.publishTime == obj2.publishTime)
             return NSOrderedSame;
         else
-            return NSOrderedAscending;
+            return NSOrderedDescending;
     }];
     
     if ([args[1] isEqual:@"reload"])

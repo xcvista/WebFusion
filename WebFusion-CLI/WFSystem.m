@@ -28,7 +28,7 @@
     eoprintf(@"> exit       - Exit from WebFusion.\n");
     eoprintf(@"> getuid     - Print the current user ID.\n");
     eoprintf(@"> getserver  - Print the current server root.\n");
-    eoprintf(@"\n");
+    eoprintf(@"> shell      - execute a command on the system shell.\n");
 }
 
 - (void)exit:(NSArray *)args
@@ -45,6 +45,24 @@
 - (void)getserver:(NSArray *)args
 {
     oprintf(@"%@\n", [[WFConnection connection].serverRoot absoluteString]);
+}
+
+- (void)shell:(NSArray *)args
+{
+    if ([args count] < 3)
+    {
+        eoprintf(@"\aERROR: Missing shell command.");
+    }
+    
+    NSMutableString *shellCommand = [NSMutableString string];
+    NSArray *command = [args subarrayWithRange:NSMakeRange(2, [args count] - 2)];
+    for (NSString *string in command)
+    {
+        [shellCommand appendFormat:@"\"%@\" ", string];
+    }
+    
+    system([shellCommand cStringUsingEncoding:[NSString defaultCStringEncoding]]);
+    putchar('\n');
 }
 
 @end
