@@ -158,7 +158,20 @@
             NSString *name = @(property_getName(property)); // Property name.
                                                             //WFLog(@"Accessing property %@.", name);
             
-            id value = [self valueForKey:name]; // Find the value.
+            id value = nil;
+            
+#if defined(GNUSTEP)
+            NSLog(@"Handling property %@ on class %@", name, NSStringFromClass([self class]));
+#endif
+            
+            @try
+            {
+                value = [self valueForKey:name]; // Find the value, using KVO.
+            }
+            @catch (NSException *exception)
+            {
+                NSLog(@"KVO for property %@ failed.");
+            }
             
             if (!value)
             {
