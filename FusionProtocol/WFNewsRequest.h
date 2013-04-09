@@ -19,9 +19,7 @@ WFStaticString(WFNewsTypeNone, nil);
 @property WFTimestamp lastT;
 @property NSString *type;
 
-#if defined(GNUSTEP)
-@property id _end;
-#endif
+WFEndProperties;
 
 - (NSArray *)getWhatzNew;
 

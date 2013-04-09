@@ -158,6 +158,11 @@
             NSString *name = @(property_getName(property)); // Property name.
                                                             //WFLog(@"Accessing property %@.", name);
             
+#if defined(GNUSTEP)
+            if ([name hasPrefix:@"_end"])
+                continue;
+#endif
+            
             id value = nil;
             
             value = [self valueForKey:name]; // Find the value, using KVO.

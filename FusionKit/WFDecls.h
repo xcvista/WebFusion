@@ -66,6 +66,12 @@ if (__ptr) *__ptr = value; \
 #endif
 #endif
 
+#if defined(GNUSTEP)
+#define WFEndProperties @property id _end
+#else
+#define WFEndProperties
+#endif
+
 WFEndDecls
 
 #endif // FusionKit_D_WFDecls_h

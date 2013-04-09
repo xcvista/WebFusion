@@ -19,9 +19,7 @@ WFBeginDecls
 @property id svrId;
 @property id ID;
 
-#if defined(GNUSTEP)
-@property id _end;
-#endif
+WFEndProperties;
 
 - (NSString *)displayName;
 

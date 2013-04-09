@@ -26,9 +26,7 @@ WFBeginDecls
 @property NSString *type;
 @property WFNews *refer;
 
-#if defined(GNUSTEP)
-@property id _end;
-#endif
+WFEndProperties;
 
 @end
 
