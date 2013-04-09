@@ -7,7 +7,6 @@
 //
 
 #import "WFLogin.h"
-#import "WFWrapper.h"
 
 @implementation WFLogin
 
