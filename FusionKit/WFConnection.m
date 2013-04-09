@@ -34,10 +34,12 @@
         [methodName replaceCharactersInRange:NSMakeRange(0, 1)
                                   withString:[[methodName substringToIndex:1] uppercaseString]];
         
-        //WFLog(@"Object %@ sending method %@ to server.", NSStringFromClass([self class]), methodName);
-        
         NSError *error = nil;
         NSData *uplinkData = [self JSONDataWithError:&error];
+        
+#if defined(GNUSTEP)
+        NSLog(@"Object %@ sending method %@ with data %@ to server.", NSStringFromClass([self class]), methodName, [[NSString alloc] initWithData:uplinkData encoding:NSUTF8StringEncoding]);
+#endif
         
         if (!uplinkData)
         {
