@@ -52,6 +52,9 @@
 		1DF66E631713DAC5007C3D7C /* NSDate+WFTimestamp.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DF66E611713DAC4007C3D7C /* NSDate+WFTimestamp.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1DF66E641713DAC5007C3D7C /* NSDate+WFTimestamp.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF66E621713DAC5007C3D7C /* NSDate+WFTimestamp.m */; };
 		1DF66E671713DDBD007C3D7C /* WFNewsCLI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF66E661713DDBD007C3D7C /* WFNewsCLI.m */; };
+		1DF66E6917142B48007C3D7C /* GNUmakefile in Resources */ = {isa = PBXBuildFile; fileRef = 1DF66E6817142B48007C3D7C /* GNUmakefile */; };
+		1DF66E6B17142D0C007C3D7C /* GNUmakefile.preamble in Resources */ = {isa = PBXBuildFile; fileRef = 1DF66E6A17142D0C007C3D7C /* GNUmakefile.preamble */; };
+		1DF66E6D17143032007C3D7C /* GNUmakefile.postamble in Resources */ = {isa = PBXBuildFile; fileRef = 1DF66E6C17143032007C3D7C /* GNUmakefile.postamble */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -125,6 +128,9 @@
 		1DF66E621713DAC5007C3D7C /* NSDate+WFTimestamp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+WFTimestamp.m"; sourceTree = "<group>"; };
 		1DF66E651713DDBD007C3D7C /* WFNewsCLI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WFNewsCLI.h; sourceTree = "<group>"; };
 		1DF66E661713DDBD007C3D7C /* WFNewsCLI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFNewsCLI.m; sourceTree = "<group>"; };
+		1DF66E6817142B48007C3D7C /* GNUmakefile */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; fileEncoding = 4; path = GNUmakefile; sourceTree = "<group>"; usesTabs = 1; };
+		1DF66E6A17142D0C007C3D7C /* GNUmakefile.preamble */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; fileEncoding = 4; path = GNUmakefile.preamble; sourceTree = "<group>"; usesTabs = 1; };
+		1DF66E6C17143032007C3D7C /* GNUmakefile.postamble */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; fileEncoding = 4; path = GNUmakefile.postamble; sourceTree = "<group>"; usesTabs = 1; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +238,9 @@
 				1DBAAAE01712BCB4002E32F7 /* WFWrapper.m */,
 				1DBAAAE31712C181002E32F7 /* WFConnection.h */,
 				1DBAAAE41712C181002E32F7 /* WFConnection.m */,
+				1DF66E6A17142D0C007C3D7C /* GNUmakefile.preamble */,
+				1DF66E6817142B48007C3D7C /* GNUmakefile */,
+				1DF66E6C17143032007C3D7C /* GNUmakefile.postamble */,
 				1DBAAA9D17129BDB002E32F7 /* Supporting Files */,
 			);
 			path = FusionKit;
@@ -465,6 +474,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DBAAAA117129BDB002E32F7 /* InfoPlist.strings in Resources */,
+				1DF66E6917142B48007C3D7C /* GNUmakefile in Resources */,
+				1DF66E6B17142D0C007C3D7C /* GNUmakefile.preamble in Resources */,
+				1DF66E6D17143032007C3D7C /* GNUmakefile.postamble in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -620,7 +632,7 @@
 				COPY_PHASE_STRIP = NO;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				FRAMEWORK_VERSION = A;
+				FRAMEWORK_VERSION = D;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -663,7 +675,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				FRAMEWORK_VERSION = A;
+				FRAMEWORK_VERSION = D;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -770,7 +782,7 @@
 				COPY_PHASE_STRIP = NO;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				FRAMEWORK_VERSION = A;
+				FRAMEWORK_VERSION = C;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -813,7 +825,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				FRAMEWORK_VERSION = A;
+				FRAMEWORK_VERSION = C;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
