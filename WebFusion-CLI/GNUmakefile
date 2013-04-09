@@ -20,7 +20,7 @@ TOOL_NAME += webfusion
 webfusion_OBJC_FILES += main.m WFHelp.m WFSystem.m WFNewsCLI.m
 webfusion_HEADER_FILES_INSTALL_DIR += FusionProtocol
 webfusion_VERSION := 4.0
-webfusion_LIBRARIES_DEPEND_UPON += -lFusionKit -lFusionProtocol -lreadline
+webfusion_LDFLAGS += -lFusionKit -lFusionProtocol -lreadline
 
 # Option include to set any additional variables
 -include GNUmakefile.preamble
