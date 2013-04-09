@@ -207,8 +207,22 @@ static WFConnection *WFConn;
 - (NSString *)userAgent
 {
     NSProcessInfo *processInfo = [NSProcessInfo processInfo];
-    NSArray *OSNames = @[@"Unknown", @"Windows NT", @"Windows", @"Solaris", @"HP UX", @"OS X", @"Sun OS", @"OSF 1"];
-    return WFSTR(@"FusionKit/4.0 (git version %@), %@, %@", WFVersion(), OSNames[[processInfo operatingSystem]], [processInfo operatingSystemVersionString]);
+    NSDictionary *OSNames = @{
+                              @(NSWindowsNTOperatingSystem): @"Windows NT",
+                              @(NSWindows95OperatingSystem): @"Windows 9x",
+                              @(NSSolarisOperatingSystem): @"Solaris",
+                              @(NSHPUXOperatingSystem): @"HP UX",
+                              @(NSMACHOperatingSystem): @"OS X",
+                              @(NSSunOSOperatingSystem): @"Sun OS",
+                              @(NSOSF1OperatingSystem): @"OSF 1",
+#if defined(GNUSTEP)
+                              @(GSGNULinuxOperatingSystem): @"GNU/Linux",
+                              @(GSBSDOperatingSystem): @"BSD",
+                              @(GSBeOperatingSystem): @"BeOS",
+                              @(GSCygwinOperatingSystem): @"Windows/Cygwin"
+#endif
+                              };
+    return WFSTR(@"FusionKit/4.0 (git version %@), %@, %@", WFVersion(), OSNames[@([processInfo operatingSystem])], [processInfo operatingSystemVersionString]);
 }
 
 @end
