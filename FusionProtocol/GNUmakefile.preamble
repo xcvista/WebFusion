@@ -5,4 +5,5 @@ CC := clang # Only clang builds it.
 
 ADDITIONAL_OBJCFLAGS := -Wall -ObjC -fobjc-arc -Xclang -fobjc-default-synthesize-properties
 ADDITIONAL_CFLAGS := -finline-functions -fblocks -std=c99
-ADDITIONAL_LIB_DIRS := 
+ADDITIONAL_LIB_DIRS := -L../FusionKit
+ADDITIONAL_INCLUDE_DIRS := -I../FusionKit

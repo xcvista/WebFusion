@@ -2,5 +2,12 @@
 before-all::
 	printf "{ \"git-version\" = \"%s\"; }\n" `git describe --always --tag` > git-version.plist
 
+after-all::
+	ln -s FusionKit.framework/Headers FusionKit
+	ln -s FusionKit.framework/libFusionKit.so libFusionKit.so
+
+
 after-clean::
 	-rm git-version.plist
+	-rm FusionKit
+	-rm libFusionKit.soß
