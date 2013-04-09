@@ -3,6 +3,5 @@
 
 CC := clang # Only clang builds it.
 
-ADDITIONAL_OBJCFLAGS := -Wall -ObjC -Xclang -fobjc-arc -fobjc-default-synthesized-properties -fblocks
+ADDITIONAL_OBJCFLAGS := -Wall -ObjC -Xclang -fobjc-arc -fobjc-default-synthesize-properties -fblocks
 ADDITIONAL_CFLAGS := -finline-functions
-ADDITIONAL_INCLUDE_DIRS := -I..

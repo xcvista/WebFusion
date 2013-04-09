@@ -8,7 +8,9 @@ FRAMEWORK_NAME := FusionKit
 # FusionKit
 FusionKit_OBJC_FILES := WFCommon.m WFObject.m WFNull.m WFWrapper.m WFConnection.m
 FusionKit_HEADER_FILES := FusionKit.h WFDecls.h WFTypes.h WFConstants.h WFObject.h WFNull.h WFWrapper.h WFConnection.h
-FusionKit_HEADER_FILES_INSTALL_DIR := $(GNUSTEP_HEADERS)/FusionKit
+FusionKit_HEADER_FILES_INSTALL_DIR := FusionKit
+FusionKit_RESOURCE_FILES := git-version.plist
+
 
 # Option include to set any additional variables
 -include GNUmakefile.preamble
