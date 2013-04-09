@@ -41,6 +41,14 @@
 		1DBAAB1E17131436002E32F7 /* libreadline.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DBAAB1D17131436002E32F7 /* libreadline.dylib */; };
 		1DF66E4D1713B1AB007C3D7C /* WFHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF66E4C1713B1AB007C3D7C /* WFHelp.m */; };
 		1DF66E501713B4EF007C3D7C /* WFSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF66E4F1713B4EF007C3D7C /* WFSystem.m */; };
+		1DF66E531713D6C6007C3D7C /* WFNewsRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DF66E511713D6C6007C3D7C /* WFNewsRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1DF66E541713D6C6007C3D7C /* WFNewsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF66E521713D6C6007C3D7C /* WFNewsRequest.m */; };
+		1DF66E571713D71F007C3D7C /* WFNews.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DF66E551713D71F007C3D7C /* WFNews.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1DF66E581713D71F007C3D7C /* WFNews.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF66E561713D71F007C3D7C /* WFNews.m */; };
+		1DF66E5B1713D81C007C3D7C /* WFUniversalContact.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DF66E591713D81C007C3D7C /* WFUniversalContact.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1DF66E5C1713D81C007C3D7C /* WFUniversalContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF66E5A1713D81C007C3D7C /* WFUniversalContact.m */; };
+		1DF66E5F1713D887007C3D7C /* WFMedia.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DF66E5D1713D887007C3D7C /* WFMedia.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1DF66E601713D887007C3D7C /* WFMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF66E5E1713D887007C3D7C /* WFMedia.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -102,6 +110,14 @@
 		1DF66E4C1713B1AB007C3D7C /* WFHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFHelp.m; sourceTree = "<group>"; };
 		1DF66E4E1713B4EF007C3D7C /* WFSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WFSystem.h; sourceTree = "<group>"; };
 		1DF66E4F1713B4EF007C3D7C /* WFSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFSystem.m; sourceTree = "<group>"; };
+		1DF66E511713D6C6007C3D7C /* WFNewsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WFNewsRequest.h; sourceTree = "<group>"; };
+		1DF66E521713D6C6007C3D7C /* WFNewsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFNewsRequest.m; sourceTree = "<group>"; };
+		1DF66E551713D71F007C3D7C /* WFNews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WFNews.h; sourceTree = "<group>"; };
+		1DF66E561713D71F007C3D7C /* WFNews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFNews.m; sourceTree = "<group>"; };
+		1DF66E591713D81C007C3D7C /* WFUniversalContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WFUniversalContact.h; sourceTree = "<group>"; };
+		1DF66E5A1713D81C007C3D7C /* WFUniversalContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFUniversalContact.m; sourceTree = "<group>"; };
+		1DF66E5D1713D887007C3D7C /* WFMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WFMedia.h; sourceTree = "<group>"; };
+		1DF66E5E1713D887007C3D7C /* WFMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFMedia.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +266,14 @@
 				1DBAAAFD17130A95002E32F7 /* FusionProtocol.h */,
 				1DBAAB0617130B0C002E32F7 /* WFLogin.h */,
 				1DBAAB0717130B0C002E32F7 /* WFLogin.m */,
+				1DF66E511713D6C6007C3D7C /* WFNewsRequest.h */,
+				1DF66E521713D6C6007C3D7C /* WFNewsRequest.m */,
+				1DF66E551713D71F007C3D7C /* WFNews.h */,
+				1DF66E561713D71F007C3D7C /* WFNews.m */,
+				1DF66E591713D81C007C3D7C /* WFUniversalContact.h */,
+				1DF66E5A1713D81C007C3D7C /* WFUniversalContact.m */,
+				1DF66E5D1713D887007C3D7C /* WFMedia.h */,
+				1DF66E5E1713D887007C3D7C /* WFMedia.m */,
 				1DBAAAF717130A95002E32F7 /* Supporting Files */,
 			);
 			path = FusionProtocol;
@@ -311,6 +335,10 @@
 			files = (
 				1DBAAB0517130AF4002E32F7 /* FusionProtocol.h in Headers */,
 				1DBAAB0817130B0C002E32F7 /* WFLogin.h in Headers */,
+				1DF66E531713D6C6007C3D7C /* WFNewsRequest.h in Headers */,
+				1DF66E571713D71F007C3D7C /* WFNews.h in Headers */,
+				1DF66E5B1713D81C007C3D7C /* WFUniversalContact.h in Headers */,
+				1DF66E5F1713D887007C3D7C /* WFMedia.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,6 +530,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DBAAB0917130B0C002E32F7 /* WFLogin.m in Sources */,
+				1DF66E541713D6C6007C3D7C /* WFNewsRequest.m in Sources */,
+				1DF66E581713D71F007C3D7C /* WFNews.m in Sources */,
+				1DF66E5C1713D81C007C3D7C /* WFUniversalContact.m in Sources */,
+				1DF66E601713D887007C3D7C /* WFMedia.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

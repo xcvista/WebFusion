@@ -9,3 +9,7 @@
 #import <FusionKit/FusionKit.h>
 
 #import <FusionProtocol/WFLogin.h>
+#import <FusionProtocol/WFNewsRequest.h>
+#import <FusionProtocol/WFNews.h>
+#import <FusionProtocol/WFUniversalContact.h>
+#import <FusionProtocol/WFMedia.h>
