@@ -3,8 +3,8 @@ before-all::
 	printf "{ \"git-version\" = \"%s\"; }\n" `git describe --always --tag` > git-version.plist
 
 after-all::
-	ln FusionProtocol.framework/Headers FusionProtocol
-	ln FusionProtocol.framework/libFusionProtocol.so libFusionProtocol.so
+	-ln -s FusionProtocol.framework/Headers FusionProtocol
+	-ln -s FusionProtocol.framework/libFusionProtocol.so libFusionProtocol.so
 
 before-clean::
 	-rm FusionProtocol

@@ -16,7 +16,7 @@ include $(GNUSTEP_MAKEFILES)/common.make
 
 FRAMEWORK_NAME += FusionKit
 
-SUBPROJECTS := FusionKit FusionProtocol WebFusion-CLIß
+SUBPROJECTS := FusionKit FusionProtocol WebFusion-CLI
 
 # Option include to set any additional variables
 -include GNUmakefile.preamble
