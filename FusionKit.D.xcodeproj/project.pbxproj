@@ -141,6 +141,7 @@
 		1DF66E7917144A79007C3D7C /* GNUmakefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GNUmakefile; sourceTree = "<group>"; usesTabs = 1; };
 		1DF66E7A17144A79007C3D7C /* GNUmakefile.postamble */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GNUmakefile.postamble; sourceTree = "<group>"; usesTabs = 1; };
 		1DF66E7B17144A79007C3D7C /* GNUmakefile.preamble */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GNUmakefile.preamble; sourceTree = "<group>"; usesTabs = 1; };
+		1DF66E7C17153D7E007C3D7C /* GNUmakefile.preamble */ = {isa = PBXFileReference; lastKnownFileType = text; path = GNUmakefile.preamble; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +192,7 @@
 			children = (
 				1DBAAA8D17129BA5002E32F7 /* .gitignore */,
 				1DF66E76171441B1007C3D7C /* GNUmakefile */,
+				1DF66E7C17153D7E007C3D7C /* GNUmakefile.preamble */,
 				1DBAAA9C17129BDB002E32F7 /* FusionKit */,
 				1DBAAAF617130A95002E32F7 /* FusionProtocol */,
 				1DBAAABB1712A311002E32F7 /* FusionKitTest */,
