@@ -21,12 +21,16 @@ WFStaticString(WFNewsTypeNone, nil);
 
 WFEndProperties;
 
-- (NSArray *)getWhatzNew;
-
 + (NSArray *)newsBeforeEpoch:(NSDate *)epoch
                        count:(NSUInteger)count
                         type:(NSString *)type
                        error:(NSError **)error;
+
+@end
+
+@interface WFNewsRequest (WFRemoteMethods)
+
+- (NSArray *)getWhatzNew;
 
 @end
 
