@@ -24,6 +24,7 @@ FusionKit_RESOURCE_FILES += git-version.plist
 FusionKit_LANGUAGES += en
 FusionKit_CURRENT_VERSION_NAME := D
 FusionKit_VERSION := 4.0
+FusionKit_LDFLAGS :=
 
 # Option include to set any additional variables
 -include GNUmakefile.preamble

@@ -58,6 +58,7 @@
 		1DF66E7117143EDF007C3D7C /* GNUmakefile.preamble in Resources */ = {isa = PBXBuildFile; fileRef = 1DF66E7017143EDF007C3D7C /* GNUmakefile.preamble */; };
 		1DF66E7317143EF3007C3D7C /* GNUmakefile in Resources */ = {isa = PBXBuildFile; fileRef = 1DF66E7217143EF3007C3D7C /* GNUmakefile */; };
 		1DF66E7517144118007C3D7C /* GNUmakefile.postamble in Resources */ = {isa = PBXBuildFile; fileRef = 1DF66E7417144118007C3D7C /* GNUmakefile.postamble */; };
+		1DF66EE91716B83A007C3D7C /* libcurl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF66EE81716B83A007C3D7C /* libcurl.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -141,6 +142,7 @@
 		1DF66E7917144A79007C3D7C /* GNUmakefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GNUmakefile; sourceTree = "<group>"; usesTabs = 1; };
 		1DF66E7A17144A79007C3D7C /* GNUmakefile.postamble */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GNUmakefile.postamble; sourceTree = "<group>"; usesTabs = 1; };
 		1DF66E7B17144A79007C3D7C /* GNUmakefile.preamble */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GNUmakefile.preamble; sourceTree = "<group>"; usesTabs = 1; };
+		1DF66EE81716B83A007C3D7C /* libcurl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurl.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib/libcurl.dylib; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DF66EE91716B83A007C3D7C /* libcurl.dylib in Frameworks */,
 				1DBAAA9717129BDB002E32F7 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -214,6 +217,7 @@
 		1DBAAA9517129BDB002E32F7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1DF66EE81716B83A007C3D7C /* libcurl.dylib */,
 				1DBAAB1D17131436002E32F7 /* libreadline.dylib */,
 				1DBAAA9617129BDB002E32F7 /* Cocoa.framework */,
 				1DBAAAB81712A311002E32F7 /* SenTestingKit.framework */,

@@ -48,6 +48,8 @@
         }
         error = nil;
         
+        
+        
         NSData *downlinkData = [[WFConnection connection] dataWithData:uplinkData
                                                             fromMethod:methodName
                                                                  error:&error];
@@ -201,10 +203,7 @@ static WFConnection *WFConn;
     {
         NSDictionary *userInfo = @{
                                    NSLocalizedDescriptionKey:
-                                       NSLocalizedStringFromTableInBundle(WFSTR(@"http%ld", [response statusCode]),
-                                                                          @"error",
-                                                                          WFThisBundle,
-                                                                          @"")
+                                       [NSHTTPURLResponse localizedStringForStatusCode:[response statusCode]],
                                    };
         err = [NSError errorWithDomain:WFErrorDoamin
                                   code:[response statusCode]
