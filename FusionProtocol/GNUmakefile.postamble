@@ -1,14 +1,18 @@
 
 before-all::
-	printf "{ \"git-version\" = \"%s\"; }\n" `git describe --always --tag` > git-version.plist
+	@echo " Generating version file..."
+	@printf "{ \"git-version\" = \"%s\"; }\n" `git describe --always --tag` > git-version.plist
 
 after-all::
-	-ln -sf FusionProtocol.framework/Headers FusionProtocol
-	-ln -sf FusionProtocol.framework/libFusionProtocol.so libFusionProtocol.so
+	@echo " Generating dependency symlinks..."
+	@-ln -sf FusionProtocol.framework/Headers FusionProtocol
+	@-ln -sf FusionProtocol.framework/libFusionProtocol.so libFusionProtocol.so
 
 before-clean::
-	-rm FusionProtocol
-	-rm libFusionProtocol.so
+	@echo " Removing dependency symlinks..."
+	@-rm FusionProtocol
+	@-rm libFusionProtocol.so
 
 after-clean::
-	-rm git-version.plist
+	@echo " Removing version file..."
+	@-rm git-version.plist
