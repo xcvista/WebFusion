@@ -15,6 +15,7 @@
 #import <readline/readline.h>
 #import <readline/history.h>
 #import <termios.h>
+#import <unistd.h>
 
 WFBeginDecls
 
