@@ -184,7 +184,7 @@ static WFConnection *WFConn;
     NSHTTPURLResponse *response = nil;
     
 #if defined(GNUSTEP)
-    NSLog(@"Outgoing: to %@, Data: [%@]", [methodURL absolutString], [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+    NSLog(@"Outgoing: %@ to %@, Data: [%@]", [request HTTPMethod], [[request URL] absoluteString], [[NSString alloc] initWithData:[request HTTPBody] encoding:NSUTF8StringEncoding]);
 #endif
     
     NSData *responseData = [NSURLConnection sendSynchronousRequest:request
@@ -192,7 +192,7 @@ static WFConnection *WFConn;
                                                              error:&err];
     
 #if defined(GNUSTEP)
-    NSLog(@"Incoming: status %ld, Data: [%@]", [response statusCode], [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+    NSLog(@"Incoming: status %ld, Data: [%@], info: %@", [response statusCode], [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding], [response allHeaderFields]);
 #endif
     
     if (![responseData length])
