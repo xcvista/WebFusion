@@ -54,16 +54,16 @@
                                                             fromMethod:methodName
                                                                  error:&error];
         
+#if defined(GNUSTEP)
+        NSLog(@"Object %@ get from method %@ with data %@.", NSStringFromClass([self class]), methodName, [[NSString alloc] initWithData:downlinkData encoding:NSUTF8StringEncoding]);
+#endif
+        
         if (!downlinkData)
         {
             value = error;
             break;
         }
         error = nil;
-        
-#if defined(GNUSTEP)
-        NSLog(@"Object %@ get from method %@ with data %@.", NSStringFromClass([self class]), methodName, [[NSString alloc] initWithData:downlinkData encoding:NSUTF8StringEncoding]);
-#endif
         
         id downlinkObject = [NSJSONSerialization JSONObjectWithData:downlinkData
                                                             options:0
@@ -154,13 +154,7 @@ static WFConnection *WFConn;
 {
     if (self = [super init])
     {
-        self.serverRoot = [NSURL URLWithString:
-#if defined(GNUSTEP)
-                           @"http://www.shisoft.net/ajax/"
-#else
-                           @"https://www.shisoft.net/ajax/"
-#endif
-                           ];
+        self.serverRoot = [NSURL URLWithString:@"https://www.shisoft.net/ajax/"];
     }
     return self;
 }
@@ -189,9 +183,17 @@ static WFConnection *WFConn;
     NSError *err = nil;
     NSHTTPURLResponse *response = nil;
     
+#if defined(GNUSTEP)
+    NSLog(@"Outgoing: to %@, Data: [%@]", [methodURL absolutString], [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+#endif
+    
     NSData *responseData = [NSURLConnection sendSynchronousRequest:request
                                                  returningResponse:&response
                                                              error:&err];
+    
+#if defined(GNUSTEP)
+    NSLog(@"Incoming: status %ld, Data: [%@]", [response statusCode], [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+#endif
     
     if (![responseData length])
     {
