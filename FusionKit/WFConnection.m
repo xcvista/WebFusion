@@ -152,7 +152,13 @@ static WFConnection *WFConn;
 {
     if (self = [super init])
     {
-        self.serverRoot = [NSURL URLWithString:@"https://www.shisoft.net/ajax/"];
+        self.serverRoot = [NSURL URLWithString:
+#if defined(GNUSTEP)
+                           @"http://www.shisoft.net/ajax/"
+#else
+                           @"https://www.shisoft.net/ajax/"
+#endif
+                           ];
     }
     return self;
 }
