@@ -37,10 +37,6 @@
         NSError *error = nil;
         NSData *uplinkData = [self JSONDataWithError:&error];
         
-#if defined(GNUSTEP)
-        NSLog(@"Object %@ sending method %@ with data %@ to server.", NSStringFromClass([self class]), methodName, [[NSString alloc] initWithData:uplinkData encoding:NSUTF8StringEncoding]);
-#endif
-        
         if (!uplinkData)
         {
             value = error;
@@ -53,10 +49,6 @@
         NSData *downlinkData = [[WFConnection connection] dataWithData:uplinkData
                                                             fromMethod:methodName
                                                                  error:&error];
-        
-#if defined(GNUSTEP)
-        NSLog(@"Object %@ get from method %@ with data %@.", NSStringFromClass([self class]), methodName, [[NSString alloc] initWithData:downlinkData encoding:NSUTF8StringEncoding]);
-#endif
         
         if (!downlinkData)
         {
@@ -183,15 +175,15 @@ static WFConnection *WFConn;
     NSError *err = nil;
     NSHTTPURLResponse *response = nil;
     
-#if defined(GNUSTEP)
-    NSLog(@"Outgoing: %@ to %@, Data: [%@]", [request HTTPMethod], [[request URL] absoluteString], [[NSString alloc] initWithData:[request HTTPBody] encoding:NSUTF8StringEncoding]);
+#if defined(GNUSTEP) || defined(DEBUG)
+    NSLog(@"Outgoing: %@ to %@, Data: [%@], info %@", [request HTTPMethod], [[request URL] absoluteString], [[NSString alloc] initWithData:[request HTTPBody] encoding:NSUTF8StringEncoding], [request allHTTPHeaderFields]);
 #endif
     
     NSData *responseData = [NSURLConnection sendSynchronousRequest:request
                                                  returningResponse:&response
                                                              error:&err];
     
-#if defined(GNUSTEP)
+#if defined(GNUSTEP) || defined(DEBUG)
     NSLog(@"Incoming: status %ld, Data: [%@], info: %@", [response statusCode], [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding], [response allHeaderFields]);
 #endif
     
