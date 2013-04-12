@@ -168,9 +168,16 @@ static WFConnection *WFConn;
     {
         [request setHTTPMethod:@"POST"];
         [request setHTTPBody:data];
+        
+        [request setValue:WFSTR(@"%lu", [data length])
+       forHTTPHeaderField:@"Content-Length"];
+        
+        [request setValue:@"application/json; charset=utf-8"
+       forHTTPHeaderField:@"Content-Type"];
     }
     
-    [request setValue:[self userAgent] forHTTPHeaderField:@"User-Agent"];
+    [request setValue:[self userAgent]
+   forHTTPHeaderField:@"User-Agent"];
     
     NSError *err = nil;
     NSHTTPURLResponse *response = nil;
