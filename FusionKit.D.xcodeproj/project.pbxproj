@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D861012171AA1AE00B41406 /* WFObject+WFOnlineUsers.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D861010171AA1AE00B41406 /* WFObject+WFOnlineUsers.h */; };
+		1D861013171AA1AE00B41406 /* WFObject+WFOnlineUsers.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D861011171AA1AE00B41406 /* WFObject+WFOnlineUsers.m */; };
+		1D861016171AA28B00B41406 /* WFUserContact.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D861014171AA28B00B41406 /* WFUserContact.h */; };
+		1D861017171AA28B00B41406 /* WFUserContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D861015171AA28B00B41406 /* WFUserContact.m */; };
+		1D86101A171AA7E000B41406 /* WFUserContactMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D861018171AA7E000B41406 /* WFUserContactMetadata.h */; };
+		1D86101B171AA7E000B41406 /* WFUserContactMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D861019171AA7E000B41406 /* WFUserContactMetadata.m */; };
 		1DBAAA9717129BDB002E32F7 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DBAAA9617129BDB002E32F7 /* Cocoa.framework */; };
 		1DBAAAA117129BDB002E32F7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1DBAAA9F17129BDB002E32F7 /* InfoPlist.strings */; };
 		1DBAAAAA17129C19002E32F7 /* WFDecls.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DBAAAA917129C16002E32F7 /* WFDecls.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -74,6 +80,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1D861010171AA1AE00B41406 /* WFObject+WFOnlineUsers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WFObject+WFOnlineUsers.h"; sourceTree = "<group>"; };
+		1D861011171AA1AE00B41406 /* WFObject+WFOnlineUsers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WFObject+WFOnlineUsers.m"; sourceTree = "<group>"; };
+		1D861014171AA28B00B41406 /* WFUserContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WFUserContact.h; sourceTree = "<group>"; };
+		1D861015171AA28B00B41406 /* WFUserContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFUserContact.m; sourceTree = "<group>"; };
+		1D861018171AA7E000B41406 /* WFUserContactMetadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WFUserContactMetadata.h; sourceTree = "<group>"; };
+		1D861019171AA7E000B41406 /* WFUserContactMetadata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFUserContactMetadata.m; sourceTree = "<group>"; };
 		1DBAAA8D17129BA5002E32F7 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		1DBAAA9317129BDB002E32F7 /* FusionKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FusionKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DBAAA9617129BDB002E32F7 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -297,12 +309,18 @@
 				1DF66E621713DAC5007C3D7C /* NSDate+WFTimestamp.m */,
 				1DBAAB0617130B0C002E32F7 /* WFLogin.h */,
 				1DBAAB0717130B0C002E32F7 /* WFLogin.m */,
+				1D861010171AA1AE00B41406 /* WFObject+WFOnlineUsers.h */,
+				1D861011171AA1AE00B41406 /* WFObject+WFOnlineUsers.m */,
 				1DF66E511713D6C6007C3D7C /* WFNewsRequest.h */,
 				1DF66E521713D6C6007C3D7C /* WFNewsRequest.m */,
 				1DF66E551713D71F007C3D7C /* WFNews.h */,
 				1DF66E561713D71F007C3D7C /* WFNews.m */,
 				1DF66E591713D81C007C3D7C /* WFUniversalContact.h */,
 				1DF66E5A1713D81C007C3D7C /* WFUniversalContact.m */,
+				1D861014171AA28B00B41406 /* WFUserContact.h */,
+				1D861015171AA28B00B41406 /* WFUserContact.m */,
+				1D861018171AA7E000B41406 /* WFUserContactMetadata.h */,
+				1D861019171AA7E000B41406 /* WFUserContactMetadata.m */,
 				1DF66E5D1713D887007C3D7C /* WFMedia.h */,
 				1DF66E5E1713D887007C3D7C /* WFMedia.m */,
 				1DF66E6F17143ED0007C3D7C /* Linux */,
@@ -405,6 +423,9 @@
 				1DF66E5B1713D81C007C3D7C /* WFUniversalContact.h in Headers */,
 				1DF66E5F1713D887007C3D7C /* WFMedia.h in Headers */,
 				1DF66E631713DAC5007C3D7C /* NSDate+WFTimestamp.h in Headers */,
+				1D861012171AA1AE00B41406 /* WFObject+WFOnlineUsers.h in Headers */,
+				1D861016171AA28B00B41406 /* WFUserContact.h in Headers */,
+				1D86101A171AA7E000B41406 /* WFUserContactMetadata.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -607,6 +628,9 @@
 				1DF66E5C1713D81C007C3D7C /* WFUniversalContact.m in Sources */,
 				1DF66E601713D887007C3D7C /* WFMedia.m in Sources */,
 				1DF66E641713DAC5007C3D7C /* NSDate+WFTimestamp.m in Sources */,
+				1D861013171AA1AE00B41406 /* WFObject+WFOnlineUsers.m in Sources */,
+				1D861017171AA28B00B41406 /* WFUserContact.m in Sources */,
+				1D86101B171AA7E000B41406 /* WFUserContactMetadata.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

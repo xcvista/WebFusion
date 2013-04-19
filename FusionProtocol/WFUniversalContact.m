@@ -19,4 +19,9 @@
     [NSString stringWithFormat:@"%@ (%@)", self.dispName, self.scrName];
 }
 
+- (NSURL *)avatarURL
+{
+    return [NSURL URLWithString:self.avatar];
+}
+
 @end

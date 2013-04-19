@@ -172,7 +172,7 @@ static WFConnection *WFConn;
         [request setValue:WFSTR(@"%lu", [data length])
        forHTTPHeaderField:@"Content-Length"];
         
-        [request setValue:@"application/json; charset=utf-8"
+        [request setValue:@"application/json;charset=utf-8"
        forHTTPHeaderField:@"Content-Type"];
     }
     

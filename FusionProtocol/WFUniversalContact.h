@@ -15,13 +15,14 @@ WFBeginDecls
 @property NSString *dispName;
 @property NSString *scrName;
 @property NSString *avatar;
-@property id svr;
+@property NSString *svr;
 @property id svrId;
 @property id ID;
 
 WFEndProperties;
 
 - (NSString *)displayName;
+- (NSURL *)avatarURL;
 
 @end
 

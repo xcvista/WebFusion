@@ -54,4 +54,16 @@
     NSLog(@"Result: %@.", result.d);
 }
 
+- (void)testObjectData
+{
+    WFObject *object = [[WFObject alloc] init];
+    WFNull *null = [WFNull null];
+    
+    NSDictionary *defaultDictionary = [object dictionaryRepresentation];
+    NSDictionary *nullDictionary = [null dictionaryRepresentation];
+    
+    STAssertEqualObjects(defaultDictionary, @{}, @"");
+    STAssertTrue(nullDictionary == nil, @"");
+}
+
 @end
