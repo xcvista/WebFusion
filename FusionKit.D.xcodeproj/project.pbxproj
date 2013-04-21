@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D6B3EB31723BD0300750EBB /* WFUserContactConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D6B3EB11723BD0200750EBB /* WFUserContactConnection.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1D6B3EB41723BD0300750EBB /* WFUserContactConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6B3EB21723BD0300750EBB /* WFUserContactConnection.m */; };
+		1D6B3EB31723BD0300750EBB /* WFUserService.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D6B3EB11723BD0200750EBB /* WFUserService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1D6B3EB41723BD0300750EBB /* WFUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6B3EB21723BD0300750EBB /* WFUserService.m */; };
 		1D6B3EB71723BE6B00750EBB /* WFOnlineUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D6B3EB51723BE6B00750EBB /* WFOnlineUser.h */; };
 		1D6B3EB81723BE6B00750EBB /* WFOnlineUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6B3EB61723BE6B00750EBB /* WFOnlineUser.m */; };
 		1D6B3EBA1723BECB00750EBB /* WFObject+WFOnlineUsers.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6B3EB91723BECB00750EBB /* WFObject+WFOnlineUsers.m */; };
@@ -86,8 +86,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1D6B3EB11723BD0200750EBB /* WFUserContactConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WFUserContactConnection.h; sourceTree = "<group>"; };
-		1D6B3EB21723BD0300750EBB /* WFUserContactConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFUserContactConnection.m; sourceTree = "<group>"; };
+		1D6B3EB11723BD0200750EBB /* WFUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WFUserService.h; sourceTree = "<group>"; };
+		1D6B3EB21723BD0300750EBB /* WFUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFUserService.m; sourceTree = "<group>"; };
 		1D6B3EB51723BE6B00750EBB /* WFOnlineUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WFOnlineUser.h; sourceTree = "<group>"; };
 		1D6B3EB61723BE6B00750EBB /* WFOnlineUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFOnlineUser.m; sourceTree = "<group>"; };
 		1D6B3EB91723BECB00750EBB /* WFObject+WFOnlineUsers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WFObject+WFOnlineUsers.m"; sourceTree = "<group>"; };
@@ -333,8 +333,8 @@
 				1D861015171AA28B00B41406 /* WFUserContact.m */,
 				1D861018171AA7E000B41406 /* WFUserContactMetadata.h */,
 				1D861019171AA7E000B41406 /* WFUserContactMetadata.m */,
-				1D6B3EB11723BD0200750EBB /* WFUserContactConnection.h */,
-				1D6B3EB21723BD0300750EBB /* WFUserContactConnection.m */,
+				1D6B3EB11723BD0200750EBB /* WFUserService.h */,
+				1D6B3EB21723BD0300750EBB /* WFUserService.m */,
 				1D6B3EB51723BE6B00750EBB /* WFOnlineUser.h */,
 				1D6B3EB61723BE6B00750EBB /* WFOnlineUser.m */,
 				1DF66E5D1713D887007C3D7C /* WFMedia.h */,
@@ -445,7 +445,7 @@
 				1D861016171AA28B00B41406 /* WFUserContact.h in Headers */,
 				1D86101A171AA7E000B41406 /* WFUserContactMetadata.h in Headers */,
 				1D78AD7D1721D1870067A108 /* WFPoll.h in Headers */,
-				1D6B3EB31723BD0300750EBB /* WFUserContactConnection.h in Headers */,
+				1D6B3EB31723BD0300750EBB /* WFUserService.h in Headers */,
 				1D6B3EB71723BE6B00750EBB /* WFOnlineUser.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -652,7 +652,7 @@
 				1D861017171AA28B00B41406 /* WFUserContact.m in Sources */,
 				1D86101B171AA7E000B41406 /* WFUserContactMetadata.m in Sources */,
 				1D78AD7E1721D1870067A108 /* WFPoll.m in Sources */,
-				1D6B3EB41723BD0300750EBB /* WFUserContactConnection.m in Sources */,
+				1D6B3EB41723BD0300750EBB /* WFUserService.m in Sources */,
 				1D6B3EB81723BE6B00750EBB /* WFOnlineUser.m in Sources */,
 				1D6B3EBA1723BECB00750EBB /* WFObject+WFOnlineUsers.m in Sources */,
 			);

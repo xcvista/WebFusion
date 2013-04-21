@@ -6,8 +6,8 @@
 //  Copyright (c) 2013年 myWorld Creations. All rights reserved.
 //
 
-#import "WFUserContactConnection.h"
+#import "WFUserService.h"
 
-@implementation WFUserContactConnection
+@implementation WFUserService
 
 @end

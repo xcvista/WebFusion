@@ -25,6 +25,9 @@
 
 @interface WFPoll : NSObject
 
+@property NSTimeInterval wait;
+@property NSTimeInterval interval;
+
 + (WFPoll *)poll;
 
 - (void)addTarget:(id<WFPollDataSource>)target;
@@ -33,8 +36,5 @@
 
 - (void)start;
 - (void)stop;
-
-- (NSTimeInterval)waitTime;
-- (void)setWaitTime:(NSTimeInterval)waitTime;
 
 @end

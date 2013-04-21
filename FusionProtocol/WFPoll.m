@@ -7,26 +7,30 @@
 //
 
 #import "WFPoll.h"
+#import "NSDate+WFTimestamp.h"
 
 WFPoll *WFPollSingleton;
 
+@interface WFPoll () <NSURLConnectionDataDelegate>
+
+@property NSMutableDictionary *targets;
+@property BOOL poll;
+@property NSURLConnection *connection;
+@property NSHTTPURLResponse *response;
+@property NSMutableData *responseData;
+
+@end
+
 @implementation WFPoll
-{
-@private
-    NSMutableDictionary *targets;
-    NSTimeInterval wait;
-    NSUInteger i;
-    BOOL poll;
-}
 
 - (id)_init
 {
     if (self = [super init])
     {
-        targets = [NSMutableDictionary dictionary];
-        poll = NO;
-        wait = 10.0;
-        i = 500;
+        self.targets = [NSMutableDictionary dictionary];
+        self.poll = NO;
+        self.wait = 10.0;
+        self.interval = 0.5;
     }
     return self;
 }
@@ -45,39 +49,71 @@ WFPoll *WFPollSingleton;
     return WFPollSingleton;
 }
 
-- (void)_pollThread
-{
-    @autoreleasepool
-    {
-        // Due to the nature of WebFusion polling mechanism, this seemingly-tight
-        // loop actually runs *very* slow.
-        while (poll)
-        {
-            // Collect information from sources: synchronized over the targets variable.
-            NSMutableArray *data = nil;
-            @synchronized (targets)
-            {
-                data = [NSMutableArray arrayWithCapacity:[targets count]];
-                for (NSString *name in targets)
-                {
-                    id<WFPollDataSource> source = targets[name];
-                    NSMutableDictionary *cond = [[source pollCondition:self] mutableCopy];
-                    cond[@"t"] = name;
-                    [data addObject:cond];
-                }
-            }
-            
-            NSDictionary *uploadDictionary = []
-            
-        }
-    }
-}
-
 - (void)start
 {
-    poll = YES;
+    self.poll = YES;
     
-    [self performSelectorInBackground:@selector(_pollThread) withObject:nil];
+    // Collect information from sources: synchronized over the targets variable.
+    NSMutableArray *conditions = nil;
+    @synchronized (_targets)
+    {
+        conditions = [NSMutableArray arrayWithCapacity:[self.targets count]];
+        for (NSString *name in self.targets)
+        {
+            id<WFPollDataSource> source = self.targets[name];
+            NSMutableDictionary *cond = [[source pollCondition:self] mutableCopy];
+            cond[@"t"] = name;
+            [conditions addObject:cond];
+        }
+    }
+    
+    NSDictionary *uploadDictionary = @{
+                                       @"d":    conditions,
+                                       @"w":    @(WFTimestampFromTimeInterval(self.wait)),
+                                       @"i":    @(WFTimestampFromTimeInterval(self.interval)),
+                                       };
+    
+    NSData *data = [NSJSONSerialization dataWithJSONObject:uploadDictionary
+                                                   options:0
+                                                     error:NULL];
+    
+    NSURL *methodURL = [NSURL URLWithString:@"Poll" relativeToURL:[WFConnection connection].serverRoot];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:methodURL];
+    
+    if ([data length])
+    {
+        [request setHTTPMethod:@"POST"];
+        [request setHTTPBody:data];
+        
+        [request setValue:@"application/json;charset=utf-8"
+       forHTTPHeaderField:@"Content-Type"];
+    }
+    
+    [request setValue:[[WFConnection connection] userAgent]
+   forHTTPHeaderField:@"User-Agent"];
+    
+    self.connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    
+    [self.connection start];
+    
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    if (self.poll)
+        [self start];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    self.response = (NSHTTPURLResponse *)response;
+    self.responseData = [NSMutableData dataWithCapacity:[[self.response allHeaderFields][@"Content-Length"] unsignedIntegerValue]];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    
 }
 
 @end

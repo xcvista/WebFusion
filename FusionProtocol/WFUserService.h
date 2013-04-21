@@ -10,7 +10,7 @@
 
 WFBeginDecls
 
-@interface WFUserContactConnection : WFObject
+@interface WFUserService : WFObject
 
 @property NSString *account;
 @property NSString *gate;

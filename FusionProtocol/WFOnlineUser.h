@@ -8,11 +8,11 @@
 
 #import <FusionKit/FusionKit.h>
 
-@class WFUserContactConnection, WFUserContact;
+@class WFUserService, WFUserContact;
 
 @interface WFOnlineUser : WFObject
 
-@property WFUserContactConnection *us;
+@property WFUserService *us;
 @property WFUserContact *uc;
 
 @end
