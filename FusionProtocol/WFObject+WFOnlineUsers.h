@@ -10,10 +10,6 @@
 
 @interface WFObject (WFOnlineUsers)
 
-@end
-
-@interface WFObject (WFOnlineUsersQuery)
-
 - (NSArray *)getAliveUserContacts;
 
 @end

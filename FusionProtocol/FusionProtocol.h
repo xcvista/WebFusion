@@ -15,3 +15,7 @@
 #import <FusionProtocol/WFNews.h>
 #import <FusionProtocol/WFUniversalContact.h>
 #import <FusionProtocol/WFMedia.h>
+#import <FusionProtocol/WFObject+WFOnlineUsers.h>
+#import <FusionProtocol/WFUserContact.h>
+#import <FusionProtocol/WFUserContactMetadata.h>
+#import <FusionProtocol/WFUserContactConnection.h>

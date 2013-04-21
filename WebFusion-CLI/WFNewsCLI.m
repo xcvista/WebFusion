@@ -31,7 +31,7 @@
     NSUInteger count = 0;
     if ([args count] > 2)
     {
-        // Not now.
+        count = [args[2] integerValue];
     }
     
     if (!count)

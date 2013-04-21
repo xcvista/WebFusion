@@ -20,6 +20,8 @@ WFBeginDecls
 @property NSArray *ucs;
 @property id user;
 
+WFEndProperties;
+
 @end
 
 WFEndDecls

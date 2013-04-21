@@ -87,7 +87,10 @@
                     }
                     else
                     {
-                        NSLog(@"WARNING: Object typed %@ occured in array asking for objects typed %@.", NSStringFromClass([item class]), NSStringFromClass(class));
+                        NSLog(@"WARNING: Object typed %@ occured in array asking for objects typed %@.",
+                              NSStringFromClass([item class]),
+                              NSStringFromClass(class)
+                              );
                         [mutableArray addObject:item];
                     }
                 }
@@ -158,7 +161,9 @@ static WFConnection *WFConn;
     return WFConn;
 }
 
-- (NSData *)dataWithData:(NSData *)data fromMethod:(NSString *)method error:(NSError *__autoreleasing *)error
+- (NSData *)dataWithData:(NSData *)data
+              fromMethod:(NSString *)method
+                   error:(NSError *__autoreleasing *)error
 {
     NSURL *methodURL = [NSURL URLWithString:method relativeToURL:self.serverRoot];
     
@@ -182,16 +187,25 @@ static WFConnection *WFConn;
     NSError *err = nil;
     NSHTTPURLResponse *response = nil;
     
-#if defined(GNUSTEP) || defined(DEBUG)
-    NSLog(@"Outgoing: %@ to %@, Data: [%@], info %@", [request HTTPMethod], [[request URL] absoluteString], [[NSString alloc] initWithData:[request HTTPBody] encoding:NSUTF8StringEncoding], [request allHTTPHeaderFields]);
+#if defined(GNUSTEP)
+    NSLog(@"Outgoing: %@ to %@, Data: [%@], info %@",
+          [request HTTPMethod],
+          [[request URL] absoluteString],
+          [[NSString alloc] initWithData:[request HTTPBody] encoding:NSUTF8StringEncoding],
+          [request allHTTPHeaderFields]
+          );
 #endif
     
     NSData *responseData = [NSURLConnection sendSynchronousRequest:request
                                                  returningResponse:&response
                                                              error:&err];
     
-#if defined(GNUSTEP) || defined(DEBUG)
-    NSLog(@"Incoming: status %ld, Data: [%@], info: %@", [response statusCode], [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding], [response allHeaderFields]);
+#if defined(GNUSTEP)
+    NSLog(@"Incoming: status %ld, Data: [%@], info: %@",
+          [response statusCode],
+          [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding],
+          [response allHeaderFields]
+          );
 #endif
     
     if (![responseData length])
@@ -220,21 +234,25 @@ static WFConnection *WFConn;
 {
     NSProcessInfo *processInfo = [NSProcessInfo processInfo];
     NSDictionary *OSNames = @{
-                              @(NSWindowsNTOperatingSystem): @"Windows NT",
-                              @(NSWindows95OperatingSystem): @"Windows 9x",
-                              @(NSSolarisOperatingSystem): @"Solaris",
-                              @(NSHPUXOperatingSystem): @"HP UX",
-                              @(NSMACHOperatingSystem): @"OS X",
-                              @(NSSunOSOperatingSystem): @"Sun OS",
-                              @(NSOSF1OperatingSystem): @"OSF 1",
-#if defined(GNUSTEP)
-                              @(GSGNULinuxOperatingSystem): @"GNU/Linux",
-                              @(GSBSDOperatingSystem): @"BSD",
-                              @(GSBeOperatingSystem): @"BeOS",
-                              @(GSCygwinOperatingSystem): @"Windows/Cygwin"
+                              @(NSWindowsNTOperatingSystem):    @"Windows NT",
+                              @(NSWindows95OperatingSystem):    @"Windows 9x",
+                              @(NSSolarisOperatingSystem):      @"Solaris",
+                              @(NSHPUXOperatingSystem):         @"HP UX",
+                              @(NSMACHOperatingSystem):         @"OS X",
+                              @(NSSunOSOperatingSystem):        @"Sun OS",
+                              @(NSOSF1OperatingSystem):         @"OSF 1",
+#if defined(GNUSTEP)                                            // GNUstep constants.
+                              @(GSGNULinuxOperatingSystem):     @"GNU/Linux",
+                              @(GSBSDOperatingSystem):          @"BSD",
+                              @(GSBeOperatingSystem):           @"BeOS",
+                              @(GSCygwinOperatingSystem):       @"Windows/Cygwin"
 #endif
                               };
-    return WFSTR(@"FusionKit/4.0 (git version %@), %@, %@", WFVersion(), OSNames[@([processInfo operatingSystem])], [processInfo operatingSystemVersionString]);
+    return WFSTR(@"FusionKit/4.0 (git version %@), %@, %@",
+                 WFVersion(),
+                 OSNames[@([processInfo operatingSystem])],
+                 [processInfo operatingSystemVersionString]
+                 );
 }
 
 @end

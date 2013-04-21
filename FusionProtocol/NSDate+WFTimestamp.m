@@ -34,10 +34,26 @@
     [dateFormatter setTimeStyle:(timeDifference > 43200) ? NSDateFormatterNoStyle : NSDateFormatterShortStyle];
     
     return
-    (timeDifference < 60) ? [NSString stringWithFormat:NSLocalizedString(@"%.0lf sec", @""), timeDifference] :
-    (timeDifference < 3600) ? [NSString stringWithFormat:NSLocalizedString(@"%.1lf min", @""), timeDifference / 60] :
-    (timeDifference < 10800) ? [NSString stringWithFormat:NSLocalizedString(@"%.1lf hr", @""), timeDifference / 3600] :
+    (timeDifference < 60) ?
+        [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%.0lf sec",
+                                                                      @"ui",
+                                                                      WFThisBundle,
+                                                                      @""
+                                                                      ), timeDifference] :
+    (timeDifference < 3600) ?
+        [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%.1lf min",
+                                                                      @"ui",
+                                                                      WFThisBundle,
+                                                                      @""
+                                                                      ), timeDifference / 60] :
+    (timeDifference < 10800) ?
+        [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%.1lf hr",
+                                                                      @"ui",
+                                                                      WFThisBundle,
+                                                                      @""
+                                                                      ), timeDifference / 3600] :
     [dateFormatter stringFromDate:self];
+    // NB: I tried indention hard to make sure this shows easily.
 }
 
 @end

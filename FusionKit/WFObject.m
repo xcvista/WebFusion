@@ -28,11 +28,10 @@
             for (unsigned int i = 0; i < propertyCount; i++)
             {
                 objc_property_t property = properties[i];
-                NSString *name = @(property_getName(property)); // Property name.
-                NSString *attr = @(property_getAttributes(property)); // Property attributes
+                NSString *name = @(property_getName(property));         // Property name.
+                NSString *attr = @(property_getAttributes(property));   // Property attributes
                 NSString *type = @"@";
                 BOOL readonly = NO;
-                // WFLog(@"Accessing property %@ with attributes %@.", name, attr);
                 
                 // Check the property type.
                 NSArray *attrs = [attr componentsSeparatedByString:@","];
@@ -44,26 +43,20 @@
                     }
                 }
                 
-                id value = dictionary[name]; // Find the value.
+                id value = dictionary[name];                            // Find the value.
                 
                 if (!value && [name isEqualToString:@"ID"])
                 {
-                    value = dictionary[@"id"]; // ID is used instead of id.
+                    value = dictionary[@"id"];                          // ID is used instead of id.
                 }
-                
-                //if (!value)
-                //    NSLog(@"WARNING: Cannot determine value for property %@, nil is used.", name);
                 
                 if (!readonly && value)
                 {
-                    // Dispatching would require some tricks.
-                    if ([type hasPrefix:WFType(id)]) // Objects. Special requirements is required.
+                                                                        // Dispatching would require some tricks.
+                    if ([type hasPrefix:WFType(id)])                    // Objects. Special requirements is required.
                     {
                         Class class = [self classForProperty:name];
                         id object = value;
-                        
-                        //if (!class)
-                        //    NSLog(@"WARNING: Class for property %@ cannot be determined.", name);
                         
                         if (class && [class isSubclassOfClass:[WFObject class]])
                         {
@@ -81,19 +74,22 @@
                                     }
                                     else
                                     {
-                                        //NSLog(@"WARNING: Object typed %@ occured in array asking for objects typed %@.", NSStringFromClass([item class]), NSStringFromClass(class));
                                         [mutableArray addObject:item];
                                     }
                                 }
                                 object = [mutableArray copy];
                             }
                         }
-                        [self setValue:object forKey:name];
+                        value = object;
                     }
-                    else
+                    
+                    @try
                     {
-                        // Everything else.
                         [self setValue:value forKey:name];
+                    }
+                    @catch (NSException *exception)
+                    {
+                        WFLog(@"WARNING: Cannot find property: %@", name);
                     }
                 }
             }
@@ -132,10 +128,7 @@
     if ([type length] > 3)
     {
         NSString *className = [type substringWithRange:NSMakeRange(2, [type length] - 3)];
-        //WFLog(@"Class type %@ occurred for property %@.", className, property);
         class = NSClassFromString(className);
-        //if (!class)
-        //    NSLog(@"WARNING: Class type %@ asked for my broperty %@ not found.", className, property);
     }
     
     return class;
@@ -156,26 +149,31 @@
         {
             objc_property_t property = properties[i];
             NSString *name = @(property_getName(property)); // Property name.
-                                                            //WFLog(@"Accessing property %@.", name);
             
-#if defined(GNUSTEP)
+#if defined(GNUSTEP)                                        // For GNUstep, this _end property is handled.
             if ([name hasPrefix:@"_end"])
                 continue;
 #endif
             
             id value = nil;
             
-            value = [self valueForKey:name]; // Find the value, using KVO.
+            @try
+            {
+                value = [self valueForKey:name];            // Find the value, using KVO.
+            }
+            @catch (NSException *exception)
+            {
+                WFLog(@"WARNING: Cannot find key: %@", name);
+            }
             
             if (!value)
             {
-                //NSLog(@"WARNING: Cannot determine value for property %@, Skipped.", name);
-                continue;
+                continue;                                   // Ignore null keys.
             }
             
             if ([name isEqualToString:@"ID"])
             {
-                name = @"id"; // ID is used instead of id.
+                name = @"id";                               // ID is used instead of id.
             }
             
             if ([value isKindOfClass:[WFObject class]])
