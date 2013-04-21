@@ -104,6 +104,8 @@ WFPoll *WFPollSingleton;
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
+    NSLog(@"WARNING: Polling error: %@", error);
+    
     if (self.poll)
         [self start];
 }
