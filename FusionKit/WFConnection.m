@@ -161,13 +161,21 @@ static WFConnection *WFConn;
     return WFConn;
 }
 
+- (NSMutableURLRequest *)URLRequestForMethod:(NSString *)method
+{
+    NSURL *methodURL = [NSURL URLWithString:method relativeToURL:self.serverRoot];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:methodURL];
+    [request setValue:[self userAgent]
+   forHTTPHeaderField:@"User-Agent"];
+    
+    return request;
+}
+
 - (NSData *)dataWithData:(NSData *)data
               fromMethod:(NSString *)method
                    error:(NSError *__autoreleasing *)error
 {
-    NSURL *methodURL = [NSURL URLWithString:method relativeToURL:self.serverRoot];
-    
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:methodURL];
+    NSMutableURLRequest *request = [self URLRequestForMethod:method];
     
     if ([data length])
     {
@@ -177,9 +185,6 @@ static WFConnection *WFConn;
         [request setValue:@"application/json;charset=utf-8"
        forHTTPHeaderField:@"Content-Type"];
     }
-    
-    [request setValue:[self userAgent]
-   forHTTPHeaderField:@"User-Agent"];
     
     NSError *err = nil;
     NSHTTPURLResponse *response = nil;

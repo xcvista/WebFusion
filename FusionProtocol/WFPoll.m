@@ -18,6 +18,7 @@ WFPoll *WFPollSingleton;
 @property NSURLConnection *connection;
 @property NSHTTPURLResponse *response;
 @property NSMutableData *responseData;
+@property NSUInteger dataSize;
 
 @end
 
@@ -77,9 +78,7 @@ WFPoll *WFPollSingleton;
                                                    options:0
                                                      error:NULL];
     
-    NSURL *methodURL = [NSURL URLWithString:@"Poll" relativeToURL:[WFConnection connection].serverRoot];
-    
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:methodURL];
+    NSMutableURLRequest *request = [[WFConnection connection] URLRequestForMethod:@"Poll"];
     
     if ([data length])
     {
@@ -90,13 +89,17 @@ WFPoll *WFPollSingleton;
        forHTTPHeaderField:@"Content-Type"];
     }
     
-    [request setValue:[[WFConnection connection] userAgent]
-   forHTTPHeaderField:@"User-Agent"];
-    
     self.connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     
     [self.connection start];
     
+}
+
+- (void)stop
+{
+    self.poll = NO;
+    [self.connection cancel];
+    self.connection = nil;
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
@@ -108,12 +111,48 @@ WFPoll *WFPollSingleton;
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
     self.response = (NSHTTPURLResponse *)response;
-    self.responseData = [NSMutableData dataWithCapacity:[[self.response allHeaderFields][@"Content-Length"] unsignedIntegerValue]];
+    self.dataSize = [[self.response allHeaderFields][@"Content-Length"] unsignedIntegerValue];
+    self.responseData = [NSMutableData dataWithCapacity:self.dataSize];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
+    [self.responseData appendData:data];
     
+    if ([self.responseData length] >= self.dataSize)
+    {
+        // All data arrived. Lock and roll.
+        NSData *data = [self.responseData subdataWithRange:NSMakeRange(0, self.dataSize)];
+        self.responseData = nil;
+        
+        WFWrapper *wrapper = [[WFWrapper alloc] initWithJSONData:data
+                                                           error:NULL];
+        NSDictionary *responseInfo = wrapper.d;
+        
+        for (NSString *key in responseInfo)
+        {
+            id<WFPollDataSource> source = self.targets[key];
+            [source poll:self didFinishPollingWithResponse:responseInfo[key]];
+        }
+    }
+    
+    if (self.poll)
+        [self start];
+}
+
+- (void)addTarget:(id<WFPollDataSource>)target
+{
+    self.targets[[target pollName:self]] = target;
+}
+
+- (void)removeTarget:(id<WFPollDataSource>)target
+{
+    [self.targets removeObjectForKey:[target pollName:self]];
+}
+
+- (void)removeTargetWithName:(NSString *)name
+{
+    [self.targets removeObjectForKey:name];
 }
 
 @end

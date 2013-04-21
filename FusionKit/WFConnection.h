@@ -30,6 +30,8 @@ WFBeginDecls
 
 - (NSString *)userAgent;
 
+- (NSMutableURLRequest *)URLRequestForMethod:(NSString *)method;
+
 @end
 
 WFEndDecls

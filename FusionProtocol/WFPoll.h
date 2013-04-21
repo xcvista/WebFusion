@@ -15,7 +15,7 @@
 @required
 - (NSString *)pollName:(WFPoll *)poll;
 - (NSDictionary *)pollCondition:(WFPoll *)poll;
-- (void)poll:(WFPoll *)poll didFinishPollingWithResponse:(NSDictionary *)response;
+- (void)poll:(WFPoll *)poll didFinishPollingWithResponse:(id)response;
 
 @optional
 - (void)pollDidStart:(WFPoll *)poll;
